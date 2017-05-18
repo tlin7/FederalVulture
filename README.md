@@ -1,5 +1,4 @@
 # FederalVulture
-APCS2 Final Project
 
 <h2>
 Tetris with Stack Implementation
