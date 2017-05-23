@@ -1,21 +1,28 @@
-Priorities:
-  array of different tetrominoes
-  falling tetrominoes
-  moving tetrominoes with keyboard input
-  rotating tetrominoes with keyboard input
-  properly stacking tetrominoes
-  clearing lines
-  game over when tetromino hits the ceiling
-  soft/hard dropping
-  timer
-  score
+Priority order from most important(smallest #) to least(largest #).
+
+Main Features:
+1. Forming tertromino shapes //done
+2. Tetromino rotation //done
+3. Tetromino displaying method
+4. Tetromino colors
+5. Queue of different tetrominoes
+6. Falling tetrominoes
+7. Moving tetrominoes with keyboard input and boundary check
+8. Rotating tetrominoes with keyboard input and boundary check/adjustment
+9. Properly stacking tetrominoes
+10. Clearing lines
+11. Game over when tetromino hits the ceiling
+12. Score
+13. Soft/hard dropping
+
   
 Additional Features:
-  next piece display
-  highscore
-  combo
-  speed/difficulty
-  pause
-  different control schemes (right hand move, left hand rotate; vice versa; one handed)
-  alternate game modes
+14. Next piece display
+15. Pause
+16. Hold piece
+15. Speed/difficulty
+17. Combo
+18. Highscore
+19. Different control schemes (right hand move, left hand rotate; vice versa; one handed)
+20. Alternate game modes
   
