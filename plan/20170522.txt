@@ -3,7 +3,7 @@ Priority order from most important(smallest #) to least(largest #).
 Main Features:
 1. Forming tertromino shapes //done
 2. Tetromino rotation //done
-3. Tetromino displaying method /  playing grid
+3. Tetromino displaying method / playing grid
 4. Tetromino colors
 5. Queue of different tetrominoes
 6. Falling tetrominoes
