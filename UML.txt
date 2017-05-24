@@ -1,5 +1,4 @@
-TETRIS
----------
+-----v--TESTRIS--v-----
 int grid[][]
 
 setup()
@@ -18,3 +17,19 @@ keyCode
 keyPressed()
 rect(x, y, w, h)
 color()
+
+-----^--TETRIS--^-----
+
+-----v--TETRIMINO--v-----
+int shape[][]
+int color
+
+Tetrimino()
+getX(int)
+getY(int)
+getXMax()
+getYMax()
+getColor()
+rotate
+
+-----^--TETRIMINO--^-----
