@@ -17,6 +17,7 @@ keyCode
 keyPressed()
 rect(x, y, w, h)
 color()
+fill()
 
 -----^--TETRIS--^-----
 
