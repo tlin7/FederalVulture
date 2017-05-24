@@ -1,0 +1,20 @@
+TETRIS
+---------
+int grid[][]
+
+setup()
+draw()
+drawGrid()
+startGame()
+gameOver(boolean)
+move()
+newPiece(int, color)
+
+
+processing methods to use:
+size()
+stroke()
+keyCode
+keyPressed()
+rect(x, y, w, h)
+color()
