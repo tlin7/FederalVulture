@@ -2,7 +2,7 @@ boolean gameOver;
 Tetromino currPiece;
 int Grid[][] = new int[10][20];
 int currPos[] = new int[2];//x y of starting piece.
-int timewarp = 0;
+int clock = 1;
 void setup() {
   size( 600, 800 );
   currPiece = new Tetromino();
@@ -20,10 +20,17 @@ void draw() {
     }
   }
   displayShape();
-  timewarp++;
-  if (timewarp > 10) {
+  if (clock % 15 == 0) {
     currPos[1]++;
-    timewarp = 0;
+  }
+  time();
+}
+
+void time() {
+  if( clock > 60 ) {
+    clock = 1;
+  } else {
+    clock ++;
   }
 }
 
@@ -49,6 +56,13 @@ void displayShape() {
     }
   }
 }
+
+void keyPressed() {
+  if( key == 'A' ) {
+    rotateCCW();
+  } else if( key == 'D' ) {
+    roateCW();
+  } else if( key == 
 
 class Tetromino {
   int shape[][] =  new int [4][2];
