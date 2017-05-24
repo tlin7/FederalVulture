@@ -1,29 +1,52 @@
-import java.util.Queue;
-
 boolean gameOver;
-int timer;
 Tetromino currPiece;
-Queue pieces;
-
+int Grid[][] = new int[10][20];
+int currPos[] = new int[2];//x y of starting piece.
+int timewarp = 0;
 void setup() {
-  size( 600, 600 );
-
+  size( 600, 800 );
+  currPiece = new Tetromino();
+  currPos[0] = 4;
+  currPos[1] = 0;
   gameOver = false;
-  timer = 1;
 }
 
 void draw() {
-  fall();
-
-  if ( timer == 60 ) {
-    timer = 1;
-  } else {
-    timer++;
+  background(0);
+  for (int x = 0; x < 10; x++) {
+    for (int y = 0; y < 20; y++) {
+      fill(150);
+      rect(x*30+50, y*30+50, 26, 26);
+    }
+  }
+  displayShape();
+  timewarp++;
+  if (timewarp > 10) {
+    currPos[1]++;
+    timewarp = 0;
   }
 }
 
-void fall() {
-  if ( timer % 60 == 0 ) {
+void displayShape() {
+  if (currPiece.getColor() == 1) {
+    fill(0, 255, 255);
+  } else if (currPiece.getColor() == 2) {
+    fill(0, 255, 0);
+  } else if (currPiece.getColor() == 3) {
+    fill(255, 0, 0);
+  } else if (currPiece.getColor() == 4) {
+    fill(255, 165, 0);
+  } else if (currPiece.getColor() == 5) {
+    fill(0, 0, 255);
+  } else if (currPiece.getColor() == 6) {
+    fill(255, 255, 0);
+  } else {
+    fill(255, 0, 255);
+  }
+  for (int i = 0; i < 4; i++) {
+    if (currPiece.getY(i) + currPos[1] >= 0) {
+      rect((currPiece.getX(i) + currPos[0])*30+50, (currPiece.getY(i) + currPos[1])*30+50, 26, 26);
+    }
   }
 }
 
@@ -32,11 +55,11 @@ class Tetromino {
   int colorr;
   public Tetromino() {
     colorr = (int)(random(1, 8));
-    if (colorr == 1) { //I
+    if (colorr == 1) {
       shape[1][0] = 1;
       shape[2][0] = -1;
       shape[3][0] = -2;
-    } else if (colorr == 2) { //S
+    } else if (colorr == 2) {
       shape[1][0] = -1;
       shape[1][1] = -1;
       shape[2][1] = -1;
