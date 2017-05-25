@@ -19,7 +19,7 @@ OBSTACLES OVERCOME
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. INSERT
+1. 
 2. UNRESOLVED
 3. ISSUES
 4. HERE
@@ -28,7 +28,7 @@ UNRESOLVED ISSUES
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. INSERT
+1. 
 2. COOL
 3. STUFF
 4. LEARNED
@@ -38,7 +38,7 @@ COOL STUFF LEARNED
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. INSERT
+1. Rotation both ways
 2. MID-DEVELOPMENT
 3. DESIGN
 4. CHANGES
@@ -49,7 +49,7 @@ MID-DEVELOPMENT DESIGN CHANGES
 LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. INSERT 
+1. Don't make merge errors
 2. LESSONS
 3. LEARNED 
 4. HERE
@@ -67,29 +67,41 @@ LESSONS LEARNED
    \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
+2017-05-25
+--------------------------------------------------------------
+Thomas ::
+Edward :: Continued working on getting key presses to rotate tetrominoes
+Taylor :: 
+==============================================================
+2017-05-24
+--------------------------------------------------------------
+Thomas :: 
+Edward :: Worked on registering key presses
+Taylor :: 
+==============================================================
 2017-05-23
 --------------------------------------------------------------
 Thomas :: Flowchart
-Edward :: Continued adding to driver.
+Edward :: Continued adding to driver
 Taylor :: UML diagram
 =============================================================
 2017-05-22 
 --------------------------------------------------------------
-Thomas :: Plan update.
+Thomas :: Plan update
 Edward :: Added to 20170523 plan
 Taylor ::
 =============================================================
 
 2017-05-20 
 --------------------------------------------------------------
-Thomas :: Completed most of the basics within Tetromino class and combined it with driver.
+Thomas :: Completed most of the basics within Tetromino class and combined it with driver
 Edward :: 
 Taylor :: 
 ==============================================================
 
 2017-05-19 
 --------------------------------------------------------------
-Thomas :: Started work on Tetromino class.
+Thomas :: Started work on Tetromino class
 Edward :: Worked on driver
 Taylor :: 
 ==============================================================
