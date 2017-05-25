@@ -1,15 +1,21 @@
+import java.util.Queue;
+import java.util.LinkedList;
 boolean gameOver;
 Tetromino currPiece;
 int Grid[][] = new int[10][20];
 int currPos[] = new int[2];//x y of starting piece.
 int clock = 1;
+Queue<Tetromino> shapes;
 
 void setup() {
   size( 600, 800 );
-  currPiece = new Tetromino();
+  shapes = new LinkedList<Tetromino>(); 
+  //currPiece = new Tetromino();
   currPos[0] = 4;
   currPos[1] = 0;
   gameOver = false;
+  fillQ();
+  currPiece = getShape();
 }
 
 void draw() {
@@ -24,33 +30,47 @@ void draw() {
   if (clock % 15 == 0) {
     currPos[1]++;
   }
-  
-  
+
+
   time();
 }
 
 void time() {
-  if( clock == 60 ) {
+  if ( clock == 60 ) {
     clock = 1;
   } else {
     clock ++;
   }
 }
 
+void fillQ() {
+  if (shapes.size() == 0) {
+    for (int i = 0; i < 10; i++) {
+      Tetromino toAdd = new Tetromino();    
+      shapes.add(toAdd);
+    }
+  }
+}
+
+Tetromino getShape() {
+  Tetromino first = shapes.peek();
+  shapes.poll();
+  return first;
+}
 void displayShape() {
-  if (currPiece.getColor() == 1) {
+  if (currPiece.getColor() == 1) {       //cyan I
     fill(0, 255, 255);
-  } else if (currPiece.getColor() == 2) {
-    fill(0, 255, 0);
-  } else if (currPiece.getColor() == 3) {
+  } else if (currPiece.getColor() == 2) {//red Z
     fill(255, 0, 0);
-  } else if (currPiece.getColor() == 4) {
+  } else if (currPiece.getColor() == 3) {//green S
+    fill(0, 255, 0);
+  } else if (currPiece.getColor() == 4) {//orange L
     fill(255, 165, 0);
-  } else if (currPiece.getColor() == 5) {
+  } else if (currPiece.getColor() == 5) {//blue J
     fill(0, 0, 255);
-  } else if (currPiece.getColor() == 6) {
+  } else if (currPiece.getColor() == 6) {//yellow O
     fill(255, 255, 0);
-  } else {
+  } else {                               //purple T
     fill(255, 0, 255);
   }
   for (int i = 0; i < 4; i++) {
@@ -61,9 +81,9 @@ void displayShape() {
 }
 
 void keyPressed() {
-  if( key == 'A' || key == 'a' ) {
+  if ( key == 'A' || key == 'a' ) {
     currPiece.rotateCCW();
-  } else if( key == 'D' || key == 'd' ) {
+  } else if ( key == 'D' || key == 'd' ) {
     currPiece.rotateCW();
   }
 }
@@ -73,34 +93,34 @@ class Tetromino {
   int colorr;
   public Tetromino() {
     colorr = (int)(random(1, 8));
-    if (colorr == 1) {
+    if (colorr == 1) {//I
       shape[1][0] = 1;
       shape[2][0] = -1;
       shape[3][0] = -2;
-    } else if (colorr == 2) {
+    } else if (colorr == 2) {//Z
       shape[1][0] = -1;
       shape[1][1] = -1;
       shape[2][1] = -1;
       shape[3][0] = 1;
-    } else if (colorr == 3) {
+    } else if (colorr == 3) {//S
       shape[1][0] = -1;
       shape[2][1] = -1;
       shape[3][0] = 1;
       shape[3][1] = -1;
-    } else if (colorr == 4) {
+    } else if (colorr == 4) {//L
       shape[1][0] = -2;
       shape[2][0] = -1;
       shape[3][1] = -1;
-    } else if (colorr == 5) {
+    } else if (colorr == 5) {//J
       shape[1][0] = -2;
       shape[2][0] = -1;
       shape[3][1] = 1;
-    } else if (colorr == 6) {
+    } else if (colorr == 6) {//O
       shape[1][0] = -1;
       shape[2][0] = -1;
       shape[2][1] = -1;
       shape[3][1] = -1;
-    } else {
+    } else {                 //T
       shape[1][0] = -1;
       shape[2][1] = -1;
       shape[3][0] = 1;
@@ -133,7 +153,7 @@ class Tetromino {
   public int getColor() {
     return colorr;
   }
-  
+
   public void rotateCW() {
   }
   public void rotateCCW() {
