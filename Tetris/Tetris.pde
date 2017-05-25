@@ -3,6 +3,7 @@ Tetromino currPiece;
 int Grid[][] = new int[10][20];
 int currPos[] = new int[2];//x y of starting piece.
 int clock = 1;
+
 void setup() {
   size( 600, 800 );
   currPiece = new Tetromino();
@@ -23,11 +24,13 @@ void draw() {
   if (clock % 15 == 0) {
     currPos[1]++;
   }
+  
+  
   time();
 }
 
 void time() {
-  if( clock > 60 ) {
+  if( clock == 60 ) {
     clock = 1;
   } else {
     clock ++;
@@ -58,11 +61,11 @@ void displayShape() {
 }
 
 void keyPressed() {
-  if( key == 'A' ) {
-    rotateCCW();
-  } else if( key == 'D' ) {
-    roateCW();
-  } else if( key == 
+  if( key == 'A' || key == 'a' ) {
+    currPiece.rotateCCW();
+  } else if( key == 'D' || key == 'd' ) {
+    currPiece.rotateCW();
+  }
 }
 
 class Tetromino {
@@ -130,7 +133,10 @@ class Tetromino {
   public int getColor() {
     return colorr;
   }
-  public void rotate() {
+  
+  public void rotateCW() {
+  }
+  public void rotateCCW() {
     for (int i = 0; i < 4; i ++) {
       int point = shape[i][0];
       shape[i][0] = shape[i][1];
