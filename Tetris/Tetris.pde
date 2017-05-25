@@ -157,10 +157,12 @@ class Tetromino {
   public void rotateCW() {
   }
   public void rotateCCW() {
-    for (int i = 0; i < 4; i ++) {
-      int point = shape[i][0];
-      shape[i][0] = shape[i][1];
-      shape[i][1] = -point;
+    if (colorr != 6) {
+      for (int i = 0; i < 4; i ++) {
+        int point = shape[i][0];
+        shape[i][0] = shape[i][1];
+        shape[i][1] = -point;
+      }
     }
   }
 }
