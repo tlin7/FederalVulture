@@ -69,19 +69,19 @@ LESSONS LEARNED
 ==============================================================
 2017-05-25
 --------------------------------------------------------------
-Thomas ::
+Thomas :: Small tweak to rotation to fix yellow O. Color adjustments to fit classic Tetris. Added some comments.
 Edward :: Continued working on getting key presses to rotate tetrominoes
 Taylor :: 
 ==============================================================
 2017-05-24
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Properly displayed tetrominos.
 Edward :: Worked on registering key presses
 Taylor :: 
 ==============================================================
 2017-05-23
 --------------------------------------------------------------
-Thomas :: Flowchart
+Thomas :: Flowchart, created grid.
 Edward :: Continued adding to driver
 Taylor :: UML diagram
 =============================================================
