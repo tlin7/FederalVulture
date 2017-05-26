@@ -85,6 +85,16 @@ void keyPressed() {
     currPiece.rotateCCW();
   } else if ( key == 'D' || key == 'd' ) {
     currPiece.rotateCW();
+  } else if ( key == CODED ) {
+    if ( keyCode == DOWN ) {
+     currPos[1]++; 
+    }
+    else if ( keyCode == LEFT ) {
+     currPos[0]--; 
+    }
+    else if ( keyCode == RIGHT ) {
+     currPos[0]++; 
+    }
   }
 }
 
