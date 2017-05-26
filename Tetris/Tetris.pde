@@ -1,8 +1,8 @@
 import java.util.Queue;
 import java.util.LinkedList;
 boolean gameOver;
-Tetromino currPiece;
-int Grid[][] = new int[10][20];
+Tetromino currPiece;//current piece in play.
+int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 int clock = 1;
 Queue<Tetromino> shapes;
@@ -43,7 +43,7 @@ void time() {
   }
 }
 
-void fillQ() {
+void fillQ() {//Fills the queue with tetrominos
   if (shapes.size() == 0) {
     for (int i = 0; i < 10; i++) {
       Tetromino toAdd = new Tetromino();    
@@ -52,12 +52,12 @@ void fillQ() {
   }
 }
 
-Tetromino getShape() {
+Tetromino getShape() {//removes and returns the first tetromino in the queue.
   Tetromino first = shapes.peek();
   shapes.poll();
   return first;
 }
-void displayShape() {
+void displayShape() {//desplays the tetrominos.
   if (currPiece.getColor() == 1) {       //cyan I
     fill(0, 255, 255);
   } else if (currPiece.getColor() == 2) {//red Z
@@ -74,26 +74,24 @@ void displayShape() {
     fill(255, 0, 255);
   }
   for (int i = 0; i < 4; i++) {
-    if (currPiece.getY(i) + currPos[1] >= 0) {
+    if (currPiece.getY(i) + currPos[1] >= 0) {//so the pieces don't show before appearing on grid.
       rect((currPiece.getX(i) + currPos[0])*30+50, (currPiece.getY(i) + currPos[1])*30+50, 26, 26);
     }
   }
 }
 
 void keyPressed() {
-  if ( key == 'A' || key == 'a' ) {
+  if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
     currPiece.rotateCCW();
-  } else if ( key == 'D' || key == 'd' ) {
+  } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
     currPiece.rotateCW();
   } else if ( key == CODED ) {
-    if ( keyCode == DOWN ) {
-     currPos[1]++; 
-    }
-    else if ( keyCode == LEFT ) {
-     currPos[0]--; 
-    }
-    else if ( keyCode == RIGHT ) {
-     currPos[0]++; 
+    if ( keyCode == DOWN ) {//accelerate down
+      currPos[1]++;
+    } else if ( keyCode == LEFT ) {//move left
+      currPos[0]--;
+    } else if ( keyCode == RIGHT ) {//move right
+      currPos[0]++;
     }
   }
 }
@@ -166,7 +164,7 @@ class Tetromino {
 
   public void rotateCW() {
   }
-  public void rotateCCW() {
+  public void rotateCCW() {//90 degree counter clockwise rotation.
     if (colorr != 6) {
       for (int i = 0; i < 4; i ++) {
         int point = shape[i][0];
