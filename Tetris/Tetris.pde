@@ -1,10 +1,10 @@
 import java.util.Queue;
 import java.util.LinkedList;
+
 boolean gameOver;
 Tetromino currPiece;//current piece in play.
 int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
-int clock = 1;
 Queue<Tetromino> shapes;
 
 void setup() {
@@ -19,31 +19,27 @@ void setup() {
 }
 
 void draw() {
+  //clear everything
   background(0);
+  
+  //draw grid
   for (int x = 0; x < 10; x++) {
     for (int y = 0; y < 20; y++) {
       fill(150);
       rect(x*30+50, y*30+50, 26, 26);
     }
   }
+  
   displayShape();
-  if (clock % 15 == 0) {
+  
+  //tetromino falls every 1/4 of a second
+  if (frameCount % 15 == 0) {
     currPos[1]++;
   }
-
-
-  time();
 }
 
-void time() {
-  if ( clock == 60 ) {
-    clock = 1;
-  } else {
-    clock ++;
-  }
-}
-
-void fillQ() {//Fills the queue with tetrominos
+//fills the queue with tetrominos
+void fillQ() {
   if (shapes.size() == 0) {
     for (int i = 0; i < 10; i++) {
       Tetromino toAdd = new Tetromino();    
@@ -52,12 +48,15 @@ void fillQ() {//Fills the queue with tetrominos
   }
 }
 
-Tetromino getShape() {//removes and returns the first tetromino in the queue.
+//removes and returns the first tetromino in the queue
+Tetromino getShape() {
   Tetromino first = shapes.peek();
   shapes.poll();
   return first;
 }
-void displayShape() {//desplays the tetrominos.
+
+//displays the tetrominos
+void displayShape() {
   if (currPiece.getColor() == 1) {       //cyan I
     fill(0, 255, 255);
   } else if (currPiece.getColor() == 2) {//red Z
@@ -88,12 +87,17 @@ void keyPressed() {
   } else if ( key == CODED ) {
     if ( keyCode == DOWN ) {//accelerate down
       currPos[1]++;
+    } else if ( keyCode == UP ) {//hard drop down
+      drop();
     } else if ( keyCode == LEFT ) {//move left
       currPos[0]--;
     } else if ( keyCode == RIGHT ) {//move right
       currPos[0]++;
     }
   }
+}
+
+void drop() {
 }
 
 class Tetromino {
@@ -162,9 +166,12 @@ class Tetromino {
     return colorr;
   }
 
+  //90 degree clockwise rotation
   public void rotateCW() {
   }
-  public void rotateCCW() {//90 degree counter clockwise rotation.
+  
+  //90 degree counter clockwise rotation
+  public void rotateCCW() {
     if (colorr != 6) {
       for (int i = 0; i < 4; i ++) {
         int point = shape[i][0];

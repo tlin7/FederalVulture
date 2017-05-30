@@ -19,7 +19,7 @@ OBSTACLES OVERCOME
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 
+1. Really weird problems with plotting the coordinates-when we moved the coordinates up and to the right to standarize everything, it reflected shapes for no apparent reason
 2. UNRESOLVED
 3. ISSUES
 4. HERE
@@ -69,9 +69,33 @@ LESSONS LEARNED
 ==============================================================
 2017-05-25
 --------------------------------------------------------------
+Thomas :: 
+Edward :: 
+Taylor :: 
+==============================================================
+2017-05-25
+--------------------------------------------------------------
+Thomas :: 
+Edward :: 
+Taylor :: 
+==============================================================
+2017-05-30
+--------------------------------------------------------------
+Thomas :: 
+Edward :: Added to devlog, added in line comments
+Taylor :: Worked on boundary detection
+==============================================================
+2017-05-26
+--------------------------------------------------------------
+Thomas :: Discovered weird problems with plotting the coordinates of the shapes and tried to work on a fix
+Edward :: Discovered weird problems with plotting the coordinates of the shapes and tried to work on a fix
+Taylor :: Worked on boundary detection
+==============================================================
+2017-05-25
+--------------------------------------------------------------
 Thomas :: Small tweak to rotation to fix yellow O. Color adjustments to fit classic Tetris. Added some comments.
 Edward :: Continued working on getting key presses to rotate tetrominoes
-Taylor :: 
+Taylor :: Worked on boundary detection
 ==============================================================
 2017-05-24
 --------------------------------------------------------------
