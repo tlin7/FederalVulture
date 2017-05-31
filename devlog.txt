@@ -12,17 +12,18 @@ Tetris
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. INSERT
-2. OBSTACLES
+1. Creating the pieces
+2. Checking boundaries
 3. HERE
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Really weird problems with plotting the coordinates-when we moved the coordinates up and to the right to standarize everything, it reflected shapes for no apparent reason
-2. UNRESOLVED
-3. ISSUES
-4. HERE
+2. If you move a piece into the sides of the grid, the program crashes
+3. A bug exists that we don't know how to replicate where a piece merges into another (pretty sure it has to do with rotating a piece into another piece at a specific time. Also occurs when soft dropping a piece - probably when done at the same time that the piece falls naturally)
+4. A bug exists that we don't know how to replicate where a piece will crash the game one space above where it would be placed (NullPointerException is thrown. Probably similar to previous bug)
+4. Hard dropping pieces - more difficult than expected
 
 
 COOL STUFF LEARNED
@@ -73,15 +74,15 @@ Thomas ::
 Edward :: 
 Taylor :: 
 ==============================================================
-2017-05-25
+2017-05-31
 --------------------------------------------------------------
 Thomas :: 
-Edward :: 
+Edward :: Implemented clockwise rotation. Found some bugs and tried fixing them. Started implementing hard drop.
 Taylor :: 
 ==============================================================
 2017-05-30
 --------------------------------------------------------------
-Thomas :: Fixed shape weirdness for the most part. Shapes can now stack and rest.
+Thomas :: Fixed shape weirdness for the most part. Shapes can now stack and rest
 Edward :: Added to devlog, added in line comments
 Taylor :: Worked on boundary detection
 ==============================================================

@@ -52,26 +52,32 @@ void draw() {
   if (frameCount % 15 == 0) {
     currPos[1]++;
   }
-  gameStuff();
+  stack();
 }
-void gameStuff() {
+void stack() {
   boolean stop = false;
   for (int i = 0; i < 4; i ++) {
     if (currPiece.getY(i) + currPos[1] < 19) {//When piece is in playing field
-      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0){//If the square on grid is occupied by a piece.
+      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
         stop = true;
       }
     }
   }
   if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
-    for (int i = 0; i < 4; i++) {
-      Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
-    } 
-    currPiece = getShape();
-    currPos[0] = 4;
-    currPos[1] = 0;
+    place();
   }
 }
+
+//places piece, gets next piece, and goes back to top of screen
+void place() {
+  for (int i = 0; i < 4; i++) {
+    Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+  } 
+  currPiece = getShape();
+  currPos[0] = 4;
+  currPos[1] = 0;
+}
+
 //fills the queue with tetrominos
 void fillQ() {
   if (shapes.size() == 0) {
@@ -221,7 +227,15 @@ class Tetromino {
 
   //90 degree clockwise rotation
   public void rotateCW() {
+    if (colorr != 6) {
+      for (int i = 0; i < 4; i ++) {
+        int point = shape[i][0];
+        shape[i][0] = -shape[i][1];
+        shape[i][1] = point;
+      }
+    }
   }
+
 
   //90 degree counter clockwise rotation
   public void rotateCCW() {
