@@ -24,10 +24,10 @@ Our implementation of Tetris will follow the classic game’s rules and goals-- 
 
 <h3>Controls</h3>
 
-*Use the left and right arrow keys to move left and right
-*Use 'A' and 'D' to rotate the piece counter clockwise and clockwise, respectively
-*Use the down arrow key to make the piece fall faster
-*Use the up arrow key to drop the piece immediately
+* Use the left and right arrow keys to move left and right
+* Use 'A' and 'D' to rotate the piece counter clockwise and clockwise, respectively
+* Use the down arrow key to make the piece fall faster
+* Use the up arrow key to drop the piece immediately
 
 <h3>Bonus features</h3>
 
