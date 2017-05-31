@@ -81,7 +81,7 @@ Taylor ::
 ==============================================================
 2017-05-30
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Fixed shape weirdness for the most part. Shapes can now stack and rest.
 Edward :: Added to devlog, added in line comments
 Taylor :: Worked on boundary detection
 ==============================================================
