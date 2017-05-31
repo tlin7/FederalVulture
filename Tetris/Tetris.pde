@@ -58,7 +58,7 @@ void gameStuff() {
   boolean stop = false;
   for (int i = 0; i < 4; i ++) {
     if (currPiece.getY(i) + currPos[1] < 19) {//When piece is in playing field
-      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
+      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0){//If the square on grid is occupied by a piece.
         stop = true;
       }
     }
@@ -114,19 +114,27 @@ void displayShape() {
 }
 
 void keyPressed() {
-  if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
-    currPiece.rotateCCW();
-  } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
-    currPiece.rotateCW();
-  } else if ( key == CODED ) {
-    if ( keyCode == DOWN ) {//accelerate down
-      currPos[1]++;
-    } else if ( keyCode == UP ) {//hard drop down
-      drop();
-    } else if ( keyCode == LEFT ) {//move left
-      currPos[0]--;
-    } else if ( keyCode == RIGHT ) {//move right
-      currPos[0]++;
+  if ( currPiece.getMaxY() + currPos[1] < 19) {
+    if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
+      currPiece.rotateCCW();
+    } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
+      currPiece.rotateCW();
+    } else if ( key == CODED ) {
+      if ( keyCode == DOWN ) {//accelerate down
+        if ( currPiece.getMaxY() + currPos[1] + 1 < 19 ) {
+          currPos[1]++;
+        }
+      } else if ( keyCode == UP ) {//hard drop down
+        drop();
+      } else if ( keyCode == LEFT ) {//move left
+        if (currPiece.getLeastX() + currPos[0] - 1 > -1) {
+          currPos[0]--;
+        }
+      } else if ( keyCode == RIGHT ) {//move right
+        if ( currPiece.getMaxX() + currPos[0] < 9 ) {
+          currPos[0]++;
+        }
+      }
     }
   }
 }
@@ -196,6 +204,17 @@ class Tetromino {
     }
     return shape[i][1];
   }
+
+  public int getLeastX() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][0] < shape[i][0]) {
+        i = x;
+      }
+    }
+    return shape[i][1];
+  }
+
   public int getColor() {
     return colorr;
   }
