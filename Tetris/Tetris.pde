@@ -21,23 +21,57 @@ void setup() {
 void draw() {
   //clear everything
   background(0);
-  
+
   //draw grid
   for (int x = 0; x < 10; x++) {
     for (int y = 0; y < 20; y++) {
-      fill(150);
+      if (Grid[x][y] == 0) {
+        fill(150);
+      } else if (Grid[x][y] == 1) {       //cyan I
+        fill(0, 255, 255);
+      } else if (Grid[x][y] == 2) {//red Z
+        fill(255, 0, 0);
+      } else if (Grid[x][y] == 3) {//green S
+        fill(0, 255, 0);
+      } else if (Grid[x][y] == 4) {//orange L
+        fill(255, 165, 0);
+      } else if (Grid[x][y] == 5) {//blue J
+        fill(0, 0, 255);
+      } else if (Grid[x][y] == 6) {//yellow O
+        fill(255, 255, 0);
+      } else {                               //purple T
+        fill(255, 0, 255);
+      }
       rect(x*30+50, y*30+50, 26, 26);
     }
   }
-  
+
   displayShape();
-  
+
   //tetromino falls every 1/4 of a second
   if (frameCount % 15 == 0) {
     currPos[1]++;
   }
+  gameStuff();
 }
-
+void gameStuff() {
+  boolean stop = false;
+  for (int i = 0; i < 4; i ++) {
+    if (currPiece.getY(i) + currPos[1] < 19) {//When piece is in playing field
+      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
+        stop = true;
+      }
+    }
+  }
+  if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
+    for (int i = 0; i < 4; i++) {
+      Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+    } 
+    currPiece = getShape();
+    currPos[0] = 4;
+    currPos[1] = 0;
+  }
+}
 //fills the queue with tetrominos
 void fillQ() {
   if (shapes.size() == 0) {
@@ -169,7 +203,7 @@ class Tetromino {
   //90 degree clockwise rotation
   public void rotateCW() {
   }
-  
+
   //90 degree counter clockwise rotation
   public void rotateCCW() {
     if (colorr != 6) {
