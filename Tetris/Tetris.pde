@@ -145,7 +145,7 @@ void keyPressed() {
       } else if ( keyCode == UP ) {//hard drop down
         drop();
       } else if ( keyCode == LEFT ) {//move left
-        if (currPiece.getLeastX() + currPos[0] - 1 > -1) {
+        if (currPiece.getLeastX() + currPos[0] > 0) {
           currPos[0]--;
         }
       } else if ( keyCode == RIGHT ) {//move right
@@ -242,7 +242,7 @@ class Tetromino {
         i = x;
       }
     }
-    return shape[i][1];
+    return shape[i][0];
   }
 
   public int getColor() {
