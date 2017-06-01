@@ -76,7 +76,7 @@ Taylor ::
 ==============================================================
 2017-05-31
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Some error fixes and implemented endgame screen.
 Edward :: Implemented clockwise rotation. Found some bugs and tried fixing them. Started implementing hard drop.
 Taylor :: 
 ==============================================================
