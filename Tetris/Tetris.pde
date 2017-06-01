@@ -54,6 +54,7 @@ void draw() {
   }
   stack();
 }
+
 void stack() {
   boolean stop = false;
   for (int i = 0; i < 4; i ++) {
@@ -64,19 +65,29 @@ void stack() {
     }
   }
   if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
-    place();
+    for (int i = 0; i < 4; i++) {
+      if (currPiece.getY(i) + currPos[1] < 0) {
+        endGame();
+      } else { 
+        Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+      }
+    }
+    currPiece = getShape();
+    currPos[0] = 4;
+    currPos[1] = 0;
   }
 }
-
-//places piece, gets next piece, and goes back to top of screen
-void place() {
-  for (int i = 0; i < 4; i++) {
-    Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
-  } 
-  currPiece = getShape();
-  currPos[0] = 4;
-  currPos[1] = 0;
-}
+/*
+This breaks things. The i in the for loop is not synced with i in stack().
+ //places piece, gets next piece, and goes back to top of screen
+ void place() {
+ for (int i = 0; i < 4; i++) {
+ Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+ } 
+ currPiece = getShape();
+ currPos[0] = 4;
+ currPos[1] = 0;
+ }*/
 
 //fills the queue with tetrominos
 void fillQ() {
@@ -90,6 +101,7 @@ void fillQ() {
 
 //removes and returns the first tetromino in the queue
 Tetromino getShape() {
+  fillQ();
   Tetromino first = shapes.peek();
   shapes.poll();
   return first;
@@ -127,9 +139,9 @@ void keyPressed() {
       currPiece.rotateCW();
     } else if ( key == CODED ) {
       if ( keyCode == DOWN ) {//accelerate down
-        if ( currPiece.getMaxY() + currPos[1] + 1 < 19 ) {
-          currPos[1]++;
-        }
+        //  if ( currPiece.getMaxY() + currPos[1] + 1 < 19 ) {
+        currPos[1]++;
+        //}
       } else if ( keyCode == UP ) {//hard drop down
         drop();
       } else if ( keyCode == LEFT ) {//move left
@@ -146,6 +158,18 @@ void keyPressed() {
 }
 
 void drop() {
+}
+
+void endGame() {
+  noLoop();
+  background(8, 46, 53);
+  textSize(50);
+  textAlign(CENTER);
+  fill(53, 223, 255);
+  text("GAME OVER", 300, 200);
+  textAlign(CENTER);
+  textSize(25);
+  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: ", 300, 250);
 }
 
 class Tetromino {
