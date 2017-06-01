@@ -135,6 +135,18 @@ void keyPressed() {
   if ( currPiece.getMaxY() + currPos[1] < 19) {
     if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
       currPiece.rotateCCW();
+      if (currPiece.getLeastX() + currPos[0] < 0) {
+        currPos[0] -= currPiece.getLeastX() + currPos[0];
+      }
+      if (currPiece.getMaxX() + currPos[0] > 9) {
+        currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
+      }
+      if (currPiece.getLeastY() + currPos[1] < 0) {
+        currPos[1] -= currPiece.getLeastY() + currPos[1];
+      }
+      if (currPiece.getMaxY() + currPos[1] > 19) {
+        currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
+      }
     } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
       currPiece.rotateCW();
     } else if ( key == CODED ) {
@@ -247,6 +259,16 @@ class Tetromino {
 
   public int getColor() {
     return colorr;
+  }
+
+  public int getLeastY() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][1] < shape[i][1]) {
+        i = x;
+      }
+    }
+    return shape[i][1];
   }
 
   //90 degree clockwise rotation
