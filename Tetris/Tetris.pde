@@ -72,6 +72,36 @@ void stack() {
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
     }
+    /*for (int i = 0; i < 4; i++) {
+     int counter = 0;
+     while (counter < 10) {
+     if (Grid[counter][currPiece.getY(i) + currPos[1]] != 0) {
+     counter++;
+     }
+     }
+     if (counter == 10) {
+     for (int x = 0; x < 10; x++) {
+     Grid[x][currPiece.getY(i) + currPos[1]-1] = Grid[x][currPiece.getY(i) + currPos[1]];
+     }
+     }
+     }*/
+
+      boolean clear;
+    for (int y = 0; y < 20; y++) {
+      clear = true;
+      for (int x = 0; x < 10; x++) {
+        if (Grid[x][y] == 0) {
+          clear = false;
+        }
+      }
+      if (clear == true) {
+        for (int prevRow = y-1; prevRow > -1; prevRow--) {
+          for (int x = 0; x < 10; x++) {
+            Grid[x][prevRow+1] = Grid[x][prevRow];
+          }
+        }
+      }
+    }
     currPiece = getShape();
     currPos[0] = 4;
     currPos[1] = 0;
@@ -137,14 +167,11 @@ void keyPressed() {
       currPiece.rotateCCW();
       if (currPiece.getLeastX() + currPos[0] < 0) {
         currPos[0] -= currPiece.getLeastX() + currPos[0];
-      }
-      if (currPiece.getMaxX() + currPos[0] > 9) {
+      } else if (currPiece.getMaxX() + currPos[0] > 9) {
         currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      }
-      if (currPiece.getLeastY() + currPos[1] < 0) {
+      } else if (currPiece.getLeastY() + currPos[1] < 0) {
         currPos[1] -= currPiece.getLeastY() + currPos[1];
-      }
-      if (currPiece.getMaxY() + currPos[1] > 19) {
+      } else if (currPiece.getMaxY() + currPos[1] > 19) {
         currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
       }
     } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
