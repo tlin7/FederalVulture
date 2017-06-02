@@ -55,26 +55,6 @@ void draw() {
     currPos[1]++;
   }
   stack();
-  
-  clearBottom();
-}
-
-//checks to see if the entire bottom row is filled
-void clearBottom() {
-  boolean full = true;
-  for (int x = 0; x < 10; x++) { //check every sqaure in the last row
-    if ( get(x*30+50, 19*30+50) == 150 ) {
-      full = false;
-    }
-  }
-  if (full == true) {
-    score += 100;
-    for ( int x = 9; x > -1; x-- ) {
-      for ( int y = 19; y > -1; y-- ) {
-        fill( get(x*30+50, y*30+50));
-      }
-    }
-  }
 }
 
 //checks if currPiece should stop, and if so, places the piece and gets next piece
@@ -109,7 +89,7 @@ void stack() {
      }
      }*/
 
-      boolean clear;
+    boolean clear;
     for (int y = 0; y < 20; y++) {
       clear = true;
       for (int x = 0; x < 10; x++) {
@@ -184,7 +164,7 @@ void displayShape() {
 }
 
 void showNext() {
-    if (shapes.peek().getColor() == 1) {     //cyan I
+  if (shapes.peek().getColor() == 1) {     //cyan I
     fill(0, 255, 255);
   } else if (shapes.peek().getColor() == 2) {//red Z
     fill(255, 0, 0);
@@ -199,7 +179,7 @@ void showNext() {
   } else {                                   //purple T
     fill(255, 0, 255);
   }
-  for( int i = 0; i < 4; i++ ) {
+  for ( int i = 0; i < 4; i++ ) {
     rect((shapes.peek().getX(i) + currPos[0])*30+300, (shapes.peek().getY(i) + currPos[1])*30+50, 26, 26);
   }
 }
@@ -258,10 +238,10 @@ void endGame() {
 
 
 class Tetromino {
-  
+
   int shape[][] =  new int [4][2];
   int colorr;
-  
+
   public Tetromino() {
     colorr = (int)(random(1, 8));
     if (colorr == 1) {//I
@@ -297,15 +277,15 @@ class Tetromino {
       shape[3][0] = 1;
     }
   }
-  
+
   public int getX(int i) {
     return shape[i][0];
   }
-  
+
   public int getY(int i) {
     return shape[i][1];
   }
-  
+
   public int getMaxX() {
     int i = 0;
     for (int x = 0; x < 4; x++) {
@@ -315,7 +295,7 @@ class Tetromino {
     }
     return shape[i][0];
   }
-  
+
   public int getMaxY() {
     int i = 0;
     for (int x = 0; x < 4; x++) {
