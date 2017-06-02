@@ -47,7 +47,6 @@ void draw() {
   }
 
   displayShape();
-  showNext();
 
   //tetromino falls every 1/4 of a second
   if (frameCount % 15 == 0) {
@@ -129,27 +128,6 @@ void displayShape() {
     if (currPiece.getY(i) + currPos[1] >= 0) {//so the pieces don't show before appearing on grid.
       rect((currPiece.getX(i) + currPos[0])*30+50, (currPiece.getY(i) + currPos[1])*30+50, 26, 26);
     }
-  }
-}
-
-void showNext() {
-    if (shapes.peek().getColor() == 1) {     //cyan I
-    fill(0, 255, 255);
-  } else if (shapes.peek().getColor() == 2) {//red Z
-    fill(255, 0, 0);
-  } else if (shapes.peek().getColor() == 3) {//green S
-    fill(0, 255, 0);
-  } else if (shapes.peek().getColor() == 4) {//orange L
-    fill(255, 165, 0);
-  } else if (shapes.peek().getColor() == 5) {//blue J
-    fill(0, 0, 255);
-  } else if (shapes.peek().getColor() == 6) {//yellow O
-    fill(255, 255, 0);
-  } else {                                   //purple T
-    fill(255, 0, 255);
-  }
-  for( int i = 0; i < 4; i++ ) {
-    rect((shapes.peek().getX(i) + currPos[0])*30+300, (shapes.peek().getY(i) + currPos[1])*30+50, 26, 26);
   }
 }
 
