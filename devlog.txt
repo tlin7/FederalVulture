@@ -20,10 +20,9 @@ UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Really weird problems with plotting the coordinates-when we moved the coordinates up and to the right to standarize everything, it reflected shapes for no apparent reason
-2. If you move a piece into the sides of the grid, the program crashes
-3. A bug exists that we don't know how to replicate where a piece merges into another (pretty sure it has to do with rotating a piece into another piece at a specific time. Also occurs when soft dropping a piece - probably when done at the same time that the piece falls naturally)
-4. A bug exists that we don't know how to replicate where a piece will crash the game one space above where it would be placed (NullPointerException is thrown. Probably similar to previous bug)
+3. A bug exists that we don't know how to replicate where a piece will crash the game one space above where it would be placed (NullPointerException is thrown. Probably similar to previous bug)
 4. Hard dropping pieces - more difficult than expected
+5. Many bugs involving rotating or moving pieces discovered: moving a piece from the left or right into another piece does not trip the boundary check, so they just merge; rotating a piece into another sometimes merges the pieces and sometimes crashes the program; rotating out of bounds crashes the program, soft dropping sometimes causes pieces to merge or crashes program, pretty sure it is when user soft drops at the same time that the piece falls naturally
 
 
 COOL STUFF LEARNED
@@ -68,10 +67,10 @@ LESSONS LEARNED
    \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 ==============================================================
-2017-05-25
+2017-06-01
 --------------------------------------------------------------
 Thomas :: 
-Edward :: 
+Edward :: Discovered many bugs, started working on fixes
 Taylor :: 
 ==============================================================
 2017-05-31
@@ -84,7 +83,7 @@ Taylor ::
 --------------------------------------------------------------
 Thomas :: Fixed shape weirdness for the most part. Shapes can now stack and rest
 Edward :: Added to devlog, added in line comments
-Taylor :: Worked on boundary detection
+Taylor :: Worked on boundary detection, finalize keys
 ==============================================================
 2017-05-26
 --------------------------------------------------------------
@@ -102,7 +101,7 @@ Taylor :: Worked on boundary detection
 --------------------------------------------------------------
 Thomas :: Properly displayed tetrominos.
 Edward :: Worked on registering key presses
-Taylor :: 
+Taylor :: worked on keypress directions
 ==============================================================
 2017-05-23
 --------------------------------------------------------------
@@ -128,7 +127,7 @@ Taylor ::
 --------------------------------------------------------------
 Thomas :: Started work on Tetromino class
 Edward :: Worked on driver
-Taylor :: 
+Taylor :: started working on keys
 ==============================================================
 
 2017-05-18 (and prior to it)

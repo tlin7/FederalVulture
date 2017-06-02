@@ -47,7 +47,6 @@ void draw() {
   }
 
   displayShape();
-  showNext();
 
   //tetromino falls every 1/4 of a second
   if (frameCount % 15 == 0) {
@@ -72,36 +71,6 @@ void stack() {
         endGame();
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
-      }
-    }
-    /*for (int i = 0; i < 4; i++) {
-     int counter = 0;
-     while (counter < 10) {
-     if (Grid[counter][currPiece.getY(i) + currPos[1]] != 0) {
-     counter++;
-     }
-     }
-     if (counter == 10) {
-     for (int x = 0; x < 10; x++) {
-     Grid[x][currPiece.getY(i) + currPos[1]-1] = Grid[x][currPiece.getY(i) + currPos[1]];
-     }
-     }
-     }*/
-
-      boolean clear;
-    for (int y = 0; y < 20; y++) {
-      clear = true;
-      for (int x = 0; x < 10; x++) {
-        if (Grid[x][y] == 0) {
-          clear = false;
-        }
-      }
-      if (clear == true) {
-        for (int prevRow = y-1; prevRow > -1; prevRow--) {
-          for (int x = 0; x < 10; x++) {
-            Grid[x][prevRow+1] = Grid[x][prevRow];
-          }
-        }
       }
     }
     currPiece = getShape();
@@ -162,27 +131,6 @@ void displayShape() {
   }
 }
 
-void showNext() {
-    if (shapes.peek().getColor() == 1) {     //cyan I
-    fill(0, 255, 255);
-  } else if (shapes.peek().getColor() == 2) {//red Z
-    fill(255, 0, 0);
-  } else if (shapes.peek().getColor() == 3) {//green S
-    fill(0, 255, 0);
-  } else if (shapes.peek().getColor() == 4) {//orange L
-    fill(255, 165, 0);
-  } else if (shapes.peek().getColor() == 5) {//blue J
-    fill(0, 0, 255);
-  } else if (shapes.peek().getColor() == 6) {//yellow O
-    fill(255, 255, 0);
-  } else {                                   //purple T
-    fill(255, 0, 255);
-  }
-  for( int i = 0; i < 4; i++ ) {
-    rect((shapes.peek().getX(i) + currPos[0])*30+300, (shapes.peek().getY(i) + currPos[1])*30+50, 26, 26);
-  }
-}
-
 //keyboard inputs
 void keyPressed() {
   if ( currPiece.getMaxY() + currPos[1] < 19) {
@@ -190,11 +138,14 @@ void keyPressed() {
       currPiece.rotateCCW();
       if (currPiece.getLeastX() + currPos[0] < 0) {
         currPos[0] -= currPiece.getLeastX() + currPos[0];
-      } else if (currPiece.getMaxX() + currPos[0] > 9) {
+      }
+      if (currPiece.getMaxX() + currPos[0] > 9) {
         currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      } else if (currPiece.getLeastY() + currPos[1] < 0) {
+      }
+      if (currPiece.getLeastY() + currPos[1] < 0) {
         currPos[1] -= currPiece.getLeastY() + currPos[1];
-      } else if (currPiece.getMaxY() + currPos[1] > 19) {
+      }
+      if (currPiece.getMaxY() + currPos[1] > 19) {
         currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
       }
     } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
