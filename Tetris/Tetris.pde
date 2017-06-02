@@ -27,7 +27,7 @@ void draw() {
     for (int y = 0; y < 20; y++) {
       if (Grid[x][y] == 0) {
         fill(150);
-      } else if (Grid[x][y] == 1) {       //cyan I
+      } else if (Grid[x][y] == 1) {//cyan I
         fill(0, 255, 255);
       } else if (Grid[x][y] == 2) {//red Z
         fill(255, 0, 0);
@@ -39,7 +39,7 @@ void draw() {
         fill(0, 0, 255);
       } else if (Grid[x][y] == 6) {//yellow O
         fill(255, 255, 0);
-      } else {                               //purple T
+      } else {                     //purple T
         fill(255, 0, 255);
       }
       rect(x*30+50, y*30+50, 26, 26);
@@ -55,6 +55,7 @@ void draw() {
   stack();
 }
 
+//checks if currPiece should stop, and if so, places the piece and gets next piece
 void stack() {
   boolean stop = false;
   for (int i = 0; i < 4; i ++) {
@@ -77,9 +78,8 @@ void stack() {
     currPos[1] = 0;
   }
 }
+
 /*
-This breaks things. The i in the for loop is not synced with i in stack().
- //places piece, gets next piece, and goes back to top of screen
  void place() {
  for (int i = 0; i < 4; i++) {
  Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
@@ -131,6 +131,7 @@ void displayShape() {
   }
 }
 
+//keyboard inputs
 void keyPressed() {
   if ( currPiece.getMaxY() + currPos[1] < 19) {
     if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
@@ -169,6 +170,7 @@ void keyPressed() {
   }
 }
 
+//on back burner for now
 void drop() {
 }
 
@@ -184,9 +186,12 @@ void endGame() {
   text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: ", 300, 250);
 }
 
+
 class Tetromino {
+  
   int shape[][] =  new int [4][2];
   int colorr;
+  
   public Tetromino() {
     colorr = (int)(random(1, 8));
     if (colorr == 1) {//I
@@ -222,12 +227,15 @@ class Tetromino {
       shape[3][0] = 1;
     }
   }
+  
   public int getX(int i) {
     return shape[i][0];
   }
+  
   public int getY(int i) {
     return shape[i][1];
   }
+  
   public int getMaxX() {
     int i = 0;
     for (int x = 0; x < 4; x++) {
@@ -237,6 +245,7 @@ class Tetromino {
     }
     return shape[i][0];
   }
+  
   public int getMaxY() {
     int i = 0;
     for (int x = 0; x < 4; x++) {

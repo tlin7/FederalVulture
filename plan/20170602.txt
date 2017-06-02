@@ -9,13 +9,12 @@ Main Features:
 6. Falling tetrominoes //done
 7. Moving tetrominoes with keyboard input //done
 8. Rotating tetrominoes with keyboard input //done
-9. Soft dropping //done
-
+9. Soft dropping //temporarily removed - many bugs found involving soft dropping
 10. Boundary check/adjustment //done
-11. Hard dropping //working on it, less of a priority at the moment.
 12. Properly stacking tetrominoes //done
-13. Clearing lines //this holds highest priority right now.
-14. Game over when tetromino hits the ceiling //done, may need to be tweaked a little.
+13. Clearing lines //this holds highest priority right now
+14. Game over when tetromino hits the ceiling //done, may need to be tweaked a little
+11. Hard dropping //working on it, less of a priority at the moment.
 15. Score
 
   
