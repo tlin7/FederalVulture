@@ -6,6 +6,7 @@ Tetromino currPiece;//current piece in play.
 int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
+int score = 0;
 
 void setup() {
   size( 600, 800 );
@@ -54,6 +55,26 @@ void draw() {
     currPos[1]++;
   }
   stack();
+  
+  clearBottom();
+}
+
+//checks to see if the entire bottom row is filled
+void clearBottom() {
+  boolean full = true;
+  for (int x = 0; x < 10; x++) { //check every sqaure in the last row
+    if ( get(x*30+50, 19*30+50) == 150 ) {
+      full = false;
+    }
+  }
+  if (full == true) {
+    score += 100;
+    for ( int x = 9; x > -1; x-- ) {
+      for ( int y = 19; y > -1; y-- ) {
+        fill( get(x*30+50, y*30+50));
+      }
+    }
+  }
 }
 
 //checks if currPiece should stop, and if so, places the piece and gets next piece
