@@ -14,7 +14,7 @@ Main Features:
 10. Boundary check/adjustment //done
 11. Hard dropping //working on it, less of a priority at the moment.
 12. Properly stacking tetrominoes //done
-13. Clearing lines
+13. Clearing lines //this holds highest priority right now.
 14. Game over when tetromino hits the ceiling //done, may need to be tweaked a little.
 15. Score
 
