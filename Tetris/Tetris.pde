@@ -63,8 +63,17 @@ void stack() {
   boolean stop = false;
   for (int i = 0; i < 4; i ++) {
     if (currPiece.getY(i) + currPos[1] < 19) {//When piece is in playing field
-      if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
-        stop = true;
+      try {
+        if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
+          stop = true;
+        }
+      }
+      catch (ArrayIndexOutOfBoundsException e) {
+        if (currPos[0] == 0) {
+          currPos[0]++;
+        } else if (currPos[0] == 9){
+         currPos[0]--;
+        }
       }
     }
   }
