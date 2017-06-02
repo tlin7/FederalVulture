@@ -83,7 +83,7 @@ Taylor ::
 --------------------------------------------------------------
 Thomas :: Fixed shape weirdness for the most part. Shapes can now stack and rest
 Edward :: Added to devlog, added in line comments
-Taylor :: Worked on boundary detection
+Taylor :: Worked on boundary detection, finalize keys
 ==============================================================
 2017-05-26
 --------------------------------------------------------------
@@ -101,7 +101,7 @@ Taylor :: Worked on boundary detection
 --------------------------------------------------------------
 Thomas :: Properly displayed tetrominos.
 Edward :: Worked on registering key presses
-Taylor :: 
+Taylor :: worked on keypress directions
 ==============================================================
 2017-05-23
 --------------------------------------------------------------
@@ -127,7 +127,7 @@ Taylor ::
 --------------------------------------------------------------
 Thomas :: Started work on Tetromino class
 Edward :: Worked on driver
-Taylor :: 
+Taylor :: started working on keys
 ==============================================================
 
 2017-05-18 (and prior to it)
