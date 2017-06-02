@@ -50,11 +50,12 @@ void draw() {
   displayShape();
   showNext();
 
-  //tetromino falls every 1/4 of a second
-  if (frameCount % 15 == 0) {
+  //tetromino falls every 1/2 of a second
+  if (frameCount % 30 == 0) {
     currPos[1]++;
   }
   stack();
+  fillQ();
 }
 
 //checks if currPiece should stop, and if so, places the piece and gets next piece
@@ -103,6 +104,7 @@ void stack() {
             Grid[x][prevRow+1] = Grid[x][prevRow];
           }
         }
+        score += 100;
       }
     }
     currPiece = getShape();
@@ -124,7 +126,7 @@ void stack() {
 //fills the queue with tetrominos
 void fillQ() {
   if (shapes.size() == 0) {
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 20; i++) {
       Tetromino toAdd = new Tetromino();    
       shapes.add(toAdd);
     }
@@ -220,6 +222,7 @@ void keyPressed() {
   }
 }
 
+
 //on back burner for now
 void drop() {
 }
@@ -233,7 +236,7 @@ void endGame() {
   text("GAME OVER", 300, 200);
   textAlign(CENTER);
   textSize(25);
-  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: ", 300, 250);
+  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: " + score, 300, 250);
 }
 
 
