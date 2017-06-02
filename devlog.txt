@@ -72,7 +72,7 @@ LESSONS LEARNED
 --------------------------------------------------------------
 Thomas :: 
 Edward :: 
-Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes
+Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes, updated filling queue, fixed bounds error when rotating on left/right bounds
 ==============================================================
 
 ==============================================================
