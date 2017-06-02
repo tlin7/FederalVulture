@@ -1,0 +1,30 @@
+Priority order from most important(smallest #) to least(largest #).
+
+Main Features:
+1. Forming tertromino shapes //done
+2. Tetromino rotation //done
+3. Tetromino displaying method / playing grid //done
+4. Tetromino colors //done
+5. Queue of different tetrominoes //done
+6. Falling tetrominoes //done
+7. Moving tetrominoes with keyboard input //done
+8. Rotating tetrominoes with keyboard input //done
+9. Soft dropping //done
+
+10. Boundary check/adjustment //done
+11. Hard dropping //working on it, less of a priority at the moment.
+12. Properly stacking tetrominoes //done
+13. Clearing lines
+14. Game over when tetromino hits the ceiling //done, may need to be tweaked a little.
+15. Score
+
+  
+Additional Features:
+16. Next piece display
+17. Pause
+18. Hold piece
+19. Speed/difficulty
+20. Combo
+21. Highscore
+22. Different control schemes (right hand move, left hand rotate; vice versa; one handed)
+23. Alternate game modes
