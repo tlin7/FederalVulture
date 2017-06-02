@@ -1,5 +1,7 @@
 # FederalVulture
 
+Thomas Lin, Taylor Wong, Edward Luo
+
 <h2>
 Tetris with Queue Implementation
 </h2>
