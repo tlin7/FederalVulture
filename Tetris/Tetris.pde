@@ -56,6 +56,14 @@ void draw() {
   }
   stack();
   fillQ();
+
+  if (frameCount % 60 == 0) {
+    score+=10;
+  }
+  textSize(30);
+  textAlign(CENTER);
+  fill(53, 223, 255);
+  text("Score: "+ score, 300, 700);
 }
 
 //checks if currPiece should stop, and if so, places the piece and gets next piece
@@ -71,8 +79,8 @@ void stack() {
       catch (ArrayIndexOutOfBoundsException e) {
         if (currPos[0] == 0) {
           currPos[0] += 2;
-        } else if (currPos[0] == 9){
-         currPos[0] -= 2; 
+        } else if (currPos[0] == 9) {
+          currPos[0] -= 2;
         }
       }
     }
@@ -100,6 +108,7 @@ void stack() {
      }*/
 
     boolean clear;
+    int bonus = 0;
     for (int y = 0; y < 20; y++) {
       clear = true;
       for (int x = 0; x < 10; x++) {
@@ -113,8 +122,21 @@ void stack() {
             Grid[x][prevRow+1] = Grid[x][prevRow];
           }
         }
-        score += 100;
+        bonus ++;
       }
+    }
+    if (bonus == 1) {
+      score+=100; 
+      bonus = 0;
+    } else if (bonus == 2) {
+      score+=200; 
+      bonus = 0;
+    } else if (bonus == 3) {
+      score +=300; 
+      bonus = 0;
+    } else if (bonus == 4) {
+      score+=400; 
+      bonus = 0;
     }
     currPiece = getShape();
     currPos[0] = 4;
@@ -175,6 +197,9 @@ void displayShape() {
 }
 
 void showNext() {
+  textSize(30);
+  fill(53, 223, 255);
+  text("Next shape", 470, 90);
   if (shapes.peek().getColor() == 1) {     //cyan I
     fill(0, 255, 255);
   } else if (shapes.peek().getColor() == 2) {//red Z
@@ -191,7 +216,7 @@ void showNext() {
     fill(255, 0, 255);
   }
   for ( int i = 0; i < 4; i++ ) {
-    rect((shapes.peek().getX(i) + currPos[0])*30+300, (shapes.peek().getY(i) + currPos[1])*30+50, 26, 26);
+    rect((shapes.peek().getX(i))*30+470, (shapes.peek().getY(i))*30+150, 26, 26);
   }
 }
 
@@ -215,6 +240,7 @@ void keyPressed() {
       if ( keyCode == DOWN ) {//accelerate down
         //  if ( currPiece.getMaxY() + currPos[1] + 1 < 19 ) {
         currPos[1]++;
+        score++;
         //}
       } else if ( keyCode == UP ) {//hard drop down
         drop();
@@ -245,7 +271,7 @@ void endGame() {
   text("GAME OVER", 300, 200);
   textAlign(CENTER);
   textSize(25);
-  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: " + score, 300, 250);
+  text("All good things come to an end :( \n You can play again though! :D ", 300, 250);
 }
 
 
