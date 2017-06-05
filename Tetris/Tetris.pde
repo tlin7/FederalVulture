@@ -7,9 +7,13 @@ int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
 int score = 0;
+boolean on = false;
 
 void setup() {
   size( 600, 800 );
+}
+
+void initialize() {
   shapes = new LinkedList<Tetromino>(); 
   //currPiece = new Tetromino();
   currPos[0] = 4;
@@ -17,50 +21,82 @@ void setup() {
   gameOver = false;
   fillQ();
   currPiece = getShape();
+  on = true;
 }
 
 void draw() {
   //clear everything
   background(0);
 
-  //draw grid
-  for (int x = 0; x < 10; x++) {
-    for (int y = 0; y < 20; y++) {
-      if (Grid[x][y] == 0) {
-        fill(150);
-      } else if (Grid[x][y] == 1) {//cyan I
-        fill(0, 255, 255);
-      } else if (Grid[x][y] == 2) {//red Z
-        fill(255, 0, 0);
-      } else if (Grid[x][y] == 3) {//green S
-        fill(0, 255, 0);
-      } else if (Grid[x][y] == 4) {//orange L
-        fill(255, 165, 0);
-      } else if (Grid[x][y] == 5) {//blue J
-        fill(0, 0, 255);
-      } else if (Grid[x][y] == 6) {//yellow O
-        fill(255, 255, 0);
-      } else {                     //purple T
-        fill(255, 0, 255);
+  if ( on == false ) {
+    background(8, 46, 53);
+    textSize(80);
+    fill(255, 0, 0);
+    text("T", 180, 200); //T
+    
+    fill(255, 153, 0);
+    text("E", 230, 200); //E
+    
+    fill(255, 255, 0);
+    text("T", 280, 200); //T
+    
+    fill(0, 255, 0);
+    text("R", 330, 200); //R
+    
+    fill(0, 0, 255);
+    text("I", 370, 200); //I
+    
+    fill(153, 0, 255);
+    text("S", 410, 200);// S
+
+    textAlign(CENTER);
+    textSize( 25 );
+    
+    fill(255, 255, 255);
+    text( "Press Enter/Return to start!", 300, 250);
+  }
+
+  if ( on == true ) {
+
+    //draw grid
+    for (int x = 0; x < 10; x++) {
+      for (int y = 0; y < 20; y++) {
+        if (Grid[x][y] == 0) {
+          fill(150);
+        } else if (Grid[x][y] == 1) {//cyan I
+          fill(0, 255, 255);
+        } else if (Grid[x][y] == 2) {//red Z
+          fill(255, 0, 0);
+        } else if (Grid[x][y] == 3) {//green S
+          fill(0, 255, 0);
+        } else if (Grid[x][y] == 4) {//orange L
+          fill(255, 165, 0);
+        } else if (Grid[x][y] == 5) {//blue J
+          fill(0, 0, 255);
+        } else if (Grid[x][y] == 6) {//yellow O
+          fill(255, 255, 0);
+        } else {                     //purple T
+          fill(255, 0, 255);
+        }
+        rect(x*30+50, y*30+50, 26, 26);
       }
-      rect(x*30+50, y*30+50, 26, 26);
     }
-  }
 
-  displayShape();
-  showNext();
+    displayShape();
+    showNext();
 
-  //tetromino falls every 1/2 of a second
-  if (frameCount % 30 == 0) {
-    currPos[1]++;
-  }
-  stack();
-  fillQ();
+    //tetromino falls every 1/2 of a second
+    if (frameCount % 30 == 0) {
+      currPos[1]++;
+    }
+    stack();
+    fillQ();
 
-  if (frameCount % 60 == 0) {
-    score+=10;
+    if (frameCount % 60 == 0) {
+      score+=10;
+    }
+    showScore();
   }
-  showScore();
 }
 
 void showScore() {
@@ -92,6 +128,7 @@ void stack() {
     for (int i = 0; i < 4; i++) {
       if (currPiece.getY(i) + currPos[1] < 0) {
         endGame();
+        on = false;
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
@@ -225,6 +262,15 @@ void showNext() {
 
 //keyboard inputs
 void keyPressed() {
+  if ( on == false ) {
+    if ( key == ENTER ) {
+      initialize();
+      on = true;
+    } else if ( key == RETURN ) {
+      initialize();
+      on = true;
+    }
+  }
   if ( currPiece.getMaxY() + currPos[1] < 19) {
     if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
       currPiece.rotateCCW();
