@@ -70,7 +70,7 @@ LESSONS LEARNED
 ==============================================================
 2017-06-05
 --------------------------------------------------------------
-Thomas ::
+Thomas :: Clockwise roation on boundaries fixed. Endscreen bugs fixed. Scoring tweaked.
 Edward :: Got hard dropping to work
 Taylor :: 
 ==============================================================
