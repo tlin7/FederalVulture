@@ -14,7 +14,7 @@ OBSTACLES OVERCOME
 
 1. Creating the pieces
 2. Checking boundaries
-3. HERE
+3. Made hard dropping work!
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -28,7 +28,7 @@ UNRESOLVED ISSUES
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 
+1. Someetimes, trial and error can be efficient
 2. COOL
 3. STUFF
 4. LEARNED
@@ -68,21 +68,23 @@ LESSONS LEARNED
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
     
 ==============================================================
+2017-06-05
+--------------------------------------------------------------
+Thomas ::
+Edward :: Got hard dropping to work
+Taylor :: 
+==============================================================
 2017-06-03
 --------------------------------------------------------------
 Thomas :: Score bonus for acceleration/multiple line clears. Next piece display finished.
 Edward :: 
 Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes, updated filling queue, fixed bounds error when rotating on left/right bounds
 ==============================================================
-
-==============================================================
 2017-06-02
 --------------------------------------------------------------
 Thomas :: Line clearing implemented.
 Edward :: 
 Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes, updated filling queue, fixed bounds error when rotating on left/right bounds
-==============================================================
-
 ==============================================================
 2017-06-01
 --------------------------------------------------------------

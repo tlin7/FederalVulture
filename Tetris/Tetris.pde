@@ -274,8 +274,37 @@ void keyPressed() {
 }
 
 
-//on back burner for now
+
 void drop() {
+  boolean stop = false;
+  for (int i = 0; i < 4; i ++) {
+    if (currPiece.getY(i) + currPos[1] < 19) {//When piece is in playing field
+      try {
+        if (Grid[currPiece.getX(i) + currPos[0]][currPiece.getY(i) + currPos[1] + 1] != 0) {//If the square on grid is occupied by a piece.
+          stop = true;
+        }
+      }
+      catch (ArrayIndexOutOfBoundsException e) {
+        if (currPos[0] == 0) {
+          currPos[0] += 2;
+        } else if (currPos[0] == 9) {
+          currPos[0] -= 2;
+        }
+      }
+    }
+  }
+  //piece is not on bottom row or another piece
+  if (currPiece.getMaxY()+ currPos[1] == 19 ^ stop == false) {
+    currPos[1]++;
+    drop();
+  }
+  for (int i = 0; i < 4; i++) {
+    if (currPiece.getY(i) + currPos[1] < 0) {
+      endGame();
+    } else { 
+      Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+    }
+  }
 }
 
 void endGame() {
