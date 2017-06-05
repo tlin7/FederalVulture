@@ -245,12 +245,28 @@ void keyPressed() {
       } else if ( keyCode == UP ) {//hard drop down
         drop();
       } else if ( keyCode == LEFT ) {//move left
-        if (currPiece.getLeastX() + currPos[0] > 0) {
-          currPos[0]--;
+        boolean move = true;
+        if (currPiece.getLeastX() + currPos[0] > 0 && currPiece.getLeastY() + currPos[1] >= 0) {
+          for (int i = 0; i < 4; i++) {
+            if (Grid[currPiece.getX(i) + currPos[0]-1][currPiece.getY(i) + currPos[1]] != 0) {
+              move = false;
+            }
+          }
+          if (move != false) {
+            currPos[0]--;
+          }
         }
       } else if ( keyCode == RIGHT ) {//move right
-        if ( currPiece.getMaxX() + currPos[0] < 9 ) {
-          currPos[0]++;
+        boolean move = true;
+        if ( currPiece.getMaxX() + currPos[0] < 9  && currPiece.getLeastY() + currPos[1] >= 0) {
+          for (int i = 0; i < 4; i++) {
+            if (Grid[currPiece.getX(i) + currPos[0]+1][currPiece.getY(i) + currPos[1]] != 0) {
+              move = false;
+            }
+          }
+          if (move != false) {
+            currPos[0]++;
+          }
         }
       }
     }
