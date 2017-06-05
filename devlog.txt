@@ -23,7 +23,7 @@ UNRESOLVED ISSUES
 3. A bug exists that we don't know how to replicate where a piece will crash the game one space above where it would be placed (NullPointerException is thrown. Probably similar to previous bug)
 4. Hard dropping pieces - more difficult than expected
 5. Many bugs involving rotating or moving pieces discovered: moving a piece from the left or right into another piece does not trip the boundary check, so they just merge; rotating a piece into another sometimes merges the pieces and sometimes crashes the program; rotating out of bounds crashes the program, soft dropping sometimes causes pieces to merge or crashes program, pretty sure it is when user soft drops at the same time that the piece falls naturally
-
+6. Hard to replicate bug where piece would just continually move downwards past the bottom of the grid, effectively rendering the game unplayable because it just keeps falling forever.
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,11 +66,19 @@ LESSONS LEARNED
   \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
    \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
+    
+==============================================================
+2017-06-03
+--------------------------------------------------------------
+Thomas :: Score bonus for acceleration/multiple line clears. Next piece display finished.
+Edward :: 
+Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes, updated filling queue, fixed bounds error when rotating on left/right bounds
+==============================================================
 
 ==============================================================
 2017-06-02
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Line clearing implemented.
 Edward :: 
 Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/worked on fixes, updated filling queue, fixed bounds error when rotating on left/right bounds
 ==============================================================
@@ -78,7 +86,7 @@ Taylor :: Worked on clearing bottom row, scoring, discovered accelerating bugs/w
 ==============================================================
 2017-06-01
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Boundary rotation fixes.
 Edward :: Discovered many bugs, started working on fixes
 Taylor :: 
 ==============================================================
