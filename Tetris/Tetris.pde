@@ -78,9 +78,9 @@ void stack() {
       }
       catch (ArrayIndexOutOfBoundsException e) {
         if (currPos[0] == 0) {
-          currPos[0] += 2;
+          currPos[0] += 1;
         } else if (currPos[0] == 9) {
-          currPos[0] -= 2;
+          currPos[0] -= 1;
         }
       }
     }
