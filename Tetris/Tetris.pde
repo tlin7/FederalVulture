@@ -236,12 +236,21 @@ void keyPressed() {
       }
     } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
       currPiece.rotateCW();
+      if (currPiece.getLeastX() + currPos[0] < 0) {
+        currPos[0] -= currPiece.getLeastX() + currPos[0];
+      } else if (currPiece.getMaxX() + currPos[0] > 9) {
+        currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
+      } else if (currPiece.getLeastY() + currPos[1] < 0) {
+        currPos[1] -= currPiece.getLeastY() + currPos[1];
+      } else if (currPiece.getMaxY() + currPos[1] > 19) {
+        currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
+      }
     } else if ( key == CODED ) {
       if ( keyCode == DOWN ) {//accelerate down
-        //  if ( currPiece.getMaxY() + currPos[1] + 1 < 19 ) {
+     //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
         currPos[1]++;
         score++;
-        //}
+       // }
       } else if ( keyCode == UP ) {//hard drop down
         drop();
       } else if ( keyCode == LEFT ) {//move left
@@ -297,6 +306,7 @@ void drop() {
   if (currPiece.getMaxY()+ currPos[1] == 19 ^ stop == false) {
     currPos[1]++;
     drop();
+    score+=2;
   }
   for (int i = 0; i < 4; i++) {
     if (currPiece.getY(i) + currPos[1] < 0) {
@@ -316,7 +326,7 @@ void endGame() {
   text("GAME OVER", 300, 200);
   textAlign(CENTER);
   textSize(25);
-  text("All good things come to an end :( \n You can play again though! :D ", 300, 250);
+  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: " + score, 300, 250);
 }
 
 
