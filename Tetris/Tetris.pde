@@ -60,12 +60,15 @@ void draw() {
   if (frameCount % 60 == 0) {
     score+=10;
   }
+  showScore();
+}
+
+void showScore() {
   textSize(30);
   textAlign(CENTER);
   fill(53, 223, 255);
   text("Score: "+ score, 300, 700);
 }
-
 //checks if currPiece should stop, and if so, places the piece and gets next piece
 void stack() {
   boolean stop = false;
@@ -247,10 +250,10 @@ void keyPressed() {
       }
     } else if ( key == CODED ) {
       if ( keyCode == DOWN ) {//accelerate down
-     //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
+        //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
         currPos[1]++;
         score++;
-       // }
+        // }
       } else if ( keyCode == UP ) {//hard drop down
         drop();
       } else if ( keyCode == LEFT ) {//move left
@@ -310,7 +313,7 @@ void drop() {
   }
   for (int i = 0; i < 4; i++) {
     if (currPiece.getY(i) + currPos[1] < 0) {
-      endGame();
+      //endGame();
     } else { 
       Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
     }
@@ -326,7 +329,9 @@ void endGame() {
   text("GAME OVER", 300, 200);
   textAlign(CENTER);
   textSize(25);
-  text("All good things come to an end :( \n You can play again though! :D \n\n\n Score: " + score, 300, 250);
+  text("All good things come to an end :( \n You can play again though! :D", 300, 250);
+
+  showScore();
 }
 
 
