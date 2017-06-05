@@ -230,22 +230,28 @@ void keyPressed() {
       currPiece.rotateCCW();
       if (currPiece.getLeastX() + currPos[0] < 0) {
         currPos[0] -= currPiece.getLeastX() + currPos[0];
-      } else if (currPiece.getMaxX() + currPos[0] > 9) {
+      }
+      if (currPiece.getMaxX() + currPos[0] > 9) {
         currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      } else if (currPiece.getLeastY() + currPos[1] < 0) {
+      }
+      if (currPiece.getLeastY() + currPos[1] < 0) {
         currPos[1] -= currPiece.getLeastY() + currPos[1];
-      } else if (currPiece.getMaxY() + currPos[1] > 19) {
+      } 
+      if (currPiece.getMaxY() + currPos[1] > 19) {
         currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
       }
     } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
       currPiece.rotateCW();
       if (currPiece.getLeastX() + currPos[0] < 0) {
         currPos[0] -= currPiece.getLeastX() + currPos[0];
-      } else if (currPiece.getMaxX() + currPos[0] > 9) {
+      }  
+      if (currPiece.getMaxX() + currPos[0] > 9) {
         currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      } else if (currPiece.getLeastY() + currPos[1] < 0) {
+      }  
+      if (currPiece.getLeastY() + currPos[1] < 0) {
         currPos[1] -= currPiece.getLeastY() + currPos[1];
-      } else if (currPiece.getMaxY() + currPos[1] > 19) {
+      } 
+      if (currPiece.getMaxY() + currPos[1] > 19) {
         currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
       }
     } else if ( key == CODED ) {
