@@ -8,6 +8,7 @@ int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
 int score = 0;
 boolean on = false;
+boolean off = false;
 
 void setup() {
   size( 600, 800 );
@@ -22,6 +23,7 @@ void initialize() {
   fillQ();
   currPiece = getShape();
   on = true;
+  off = false;
 }
 
 void draw() {
@@ -33,30 +35,30 @@ void draw() {
     textSize(80);
     fill(255, 0, 0);
     text("T", 180, 200); //T
-    
+
     fill(255, 153, 0);
     text("E", 230, 200); //E
-    
+
     fill(255, 255, 0);
     text("T", 280, 200); //T
-    
+
     fill(0, 255, 0);
     text("R", 330, 200); //R
-    
+
     fill(0, 0, 255);
     text("I", 370, 200); //I
-    
+
     fill(153, 0, 255);
     text("S", 410, 200);// S
 
     textAlign(CENTER);
     textSize( 25 );
-    
+
     fill(255, 255, 255);
     text( "Press Enter/Return to start!", 300, 250);
   }
 
-  if ( on == true ) {
+  if ( on == true && off == false) {
 
     //draw grid
     for (int x = 0; x < 10; x++) {
@@ -100,11 +102,22 @@ void draw() {
 }
 
 void showScore() {
-  textSize(30);
-  textAlign(CENTER);
-  fill(53, 223, 255);
-  text("Score: "+ score, 300, 700);
+
+  if ( on == true && off == false ) {
+    textSize(30);
+    textAlign(CENTER);
+    fill(53, 223, 255);
+    text("Score: "+ score, 300, 700);
+  }
+
+  if ( on == false && off == true ) {
+    textSize(30);
+    textAlign(CENTER);
+    fill ( 255, 255, 255 );
+    text("Score: "+ score, 300, 300);
+  }
 }
+
 //checks if currPiece should stop, and if so, places the piece and gets next piece
 void stack() {
   boolean stop = false;
@@ -129,6 +142,7 @@ void stack() {
       if (currPiece.getY(i) + currPos[1] < 0) {
         endGame();
         on = false;
+        off = true;
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
@@ -374,16 +388,50 @@ void drop() {
 
 void endGame() {
   noLoop();
-  background(8, 46, 53);
-  textSize(50);
-  textAlign(CENTER);
-  fill(53, 223, 255);
-  text("GAME OVER", 300, 200);
-  textAlign(CENTER);
-  textSize(25);
-  text("All good things come to an end :( \n You can play again though! :D", 300, 250);
 
-  showScore();
+  background(8, 46, 53);
+
+  textSize(60);
+  fill(255, 0, 0);
+  text("G", 120, 200); //G
+
+  fill(255, 153, 0);
+  text("A", 170, 200); //A
+
+  fill(255, 255, 0);
+  text("M", 220, 200); //M
+
+  fill(0, 255, 0);
+  text("E", 270, 200); //E
+
+  fill(0, 0, 255);
+  text(" ", 300, 200); // 
+
+  fill(0, 0, 255);
+  text("O", 350, 200);// O
+
+  fill(153, 0, 255);
+  text("V", 400, 200);// V
+
+  fill(204, 0, 153);
+  text("E", 450, 200);// E
+
+  fill(255, 204, 255);
+  text("R", 500, 200);// R
+
+  textAlign(CENTER);
+  textSize( 25 );
+
+  fill(255, 255, 255);
+  text("Great job! Your score was:", 300, 250);
+
+  textSize(30);
+  textAlign(CENTER);
+  text("Score: "+ score, 300, 300);
+
+  fill(53, 223, 255);
+  text("The fun doesn't have to end here!", 300, 450);
+  text("Play again!", 300, 500);
 }
 
 
