@@ -86,6 +86,7 @@ void draw() {
     showNext();
     showHelp();
     showPause();
+    showLevel();
     // showRestart();
 
     //tetromino falls every 1/2 of a second
@@ -125,6 +126,17 @@ void showPause() {
     text("PAUSE     ", 470, 580);
   }
 }
+
+void showLevel() {
+  textSize(30);
+  fill(53, 223, 255);
+  text("Difficulty", 470, 290);
+  text("Level:", 470, 320);
+
+  fill(255);
+  text(difficulty, 470, 350);
+}
+
 
 /*
 void showRestart() {
@@ -330,7 +342,7 @@ void keyPressed() {
       initialize();
       gameOver = false;
     }
-     if ( key == '4' ) {
+    if ( key == '4' ) {
       difficulty = 5;
       initialize();
       gameOver = false;
