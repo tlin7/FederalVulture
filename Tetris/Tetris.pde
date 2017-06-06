@@ -29,31 +29,7 @@ void draw() {
   background(8, 46, 53);
 
   if ( gameOver == true ) {
-    background(8, 46, 53);
-    textSize(80);
-    fill(255, 0, 0);
-    text("T", 180, 200); //T
-
-    fill(255, 153, 0);
-    text("E", 230, 200); //E
-
-    fill(255, 255, 0);
-    text("T", 280, 200); //T
-
-    fill(0, 255, 0);
-    text("R", 330, 200); //R
-
-    fill(0, 0, 255);
-    text("I", 370, 200); //I
-
-    fill(153, 0, 255);
-    text("S", 410, 200);// S
-
-    textAlign(CENTER);
-    textSize( 25 );
-
-    fill(255, 255, 255);
-    text( "Choose your difficulty!\n 1-4, 1 being easiest, 4 being hardest!", 300, 250);
+    showHome();
   }
 
   if ( gameOver == false ) {
@@ -101,6 +77,77 @@ void draw() {
     }
     showScore();
   }
+}
+
+void showHome() {
+  background(8, 46, 53);
+  textSize(80);
+  fill(255, 0, 0);
+  text("T", 180, 200); //T
+
+  fill(255, 153, 0);
+  text("E", 230, 200); //E
+
+  fill(255, 255, 0);
+  text("T", 280, 200); //T
+
+  fill(0, 255, 0);
+  text("R", 330, 200); //R
+
+  fill(0, 0, 255);
+  text("I", 370, 200); //I
+
+  fill(153, 0, 255);
+  text("S", 410, 200);// S
+
+  textAlign(CENTER);
+  textSize( 30 );
+
+  fill(255);
+  text( "Choose your difficulty:", 300, 350);
+
+  textSize(20);
+  fill(53, 223, 255);
+  text("(1-4, 1 being easiest, 4 being hardest)", 300, 400);
+}
+
+void confirmLevel() {
+  
+  noLoop();
+  background(8, 46, 53);
+  textSize(80);
+  fill(255, 0, 0);
+  text("T", 180, 200); //T
+
+  fill(255, 153, 0);
+  text("E", 230, 200); //E
+
+  fill(255, 255, 0);
+  text("T", 280, 200); //T
+
+  fill(0, 255, 0);
+  text("R", 330, 200); //R
+
+  fill(0, 0, 255);
+  text("I", 370, 200); //I
+
+  fill(153, 0, 255);
+  text("S", 410, 200);// S
+
+  textAlign(CENTER);
+  textSize( 30 );
+
+  fill(255);
+  text( "Proceed to play Level " + difficulty + "?", 300, 350);
+
+  textSize(20);
+  fill(53, 223, 255);
+  
+  textAlign(LEFT);
+  text("Press 'Y' or 'y' if so.", 75, 400);
+  
+  textAlign(RIGHT);
+  text("Press 'N' or 'n' if not.", 525, 400);
 }
 
 void showHelp() {
@@ -329,23 +376,28 @@ void keyPressed() {
   if ( gameOver == true ) {
     if ( key == '1' ) {
       difficulty = 1;
-      initialize();
-      gameOver = false;
+      confirmLevel();
     }
     if ( key == '2' ) {
       difficulty = 2;
-      initialize();
-      gameOver = false;
+      confirmLevel();
     }
     if ( key == '3' ) {
       difficulty = 3;
-      initialize();
-      gameOver = false;
+      confirmLevel();
     }
     if ( key == '4' ) {
       difficulty = 5;
+      confirmLevel();
+    }
+
+    if ( key == 'Y' || key == 'y' ) {
+      loop();
       initialize();
       gameOver = false;
+    } else if ( key == 'N' || key == 'n' ) {
+      loop();
+      showHome();
     }
   }
 
