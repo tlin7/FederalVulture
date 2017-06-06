@@ -1,5 +1,9 @@
 import java.util.Queue;
 import java.util.LinkedList;
+import processing.sound.*;
+
+SoundFile jFile;
+SoundFile tFile;
 
 boolean gameOver = true;
 Tetromino currPiece;//current piece in play.
@@ -7,10 +11,15 @@ int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
 int score;
-int difficulty = 1;
+int difficulty = 0;
 
 void setup() {
   size( 600, 800 );
+
+  jFile = new SoundFile(this, "Jeopardy-theme-song.mp3");
+  tFile = new SoundFile(this, "Tetris.mp3");
+
+  tFile.loop();
 }
 
 void initialize() {
@@ -25,6 +34,7 @@ void initialize() {
 }
 
 void draw() {
+
   //clear everything
   background(8, 46, 53);
 
@@ -112,7 +122,7 @@ void showHome() {
 }
 
 void confirmLevel() {
-  
+
   noLoop();
   background(8, 46, 53);
   textSize(80);
@@ -142,10 +152,10 @@ void confirmLevel() {
 
   textSize(20);
   fill(53, 223, 255);
-  
+
   textAlign(LEFT);
   text("Press 'Y' or 'y' if so.", 75, 400);
-  
+
   textAlign(RIGHT);
   text("Press 'N' or 'n' if not.", 525, 400);
 }
@@ -177,7 +187,6 @@ void showPause() {
 void showLevel() {
   textSize(30);
   fill(53, 223, 255);
-  text("Difficulty", 470, 290);
   text("Level:", 470, 320);
 
   fill(255);
@@ -390,14 +399,16 @@ void keyPressed() {
       difficulty = 5;
       confirmLevel();
     }
+    if ( difficulty != 0) {
 
-    if ( key == 'Y' || key == 'y' ) {
-      loop();
-      initialize();
-      gameOver = false;
-    } else if ( key == 'N' || key == 'n' ) {
-      loop();
-      showHome();
+      if ( key == 'Y' || key == 'y' ) {
+        loop();
+        initialize();
+        gameOver = false;
+      } else if ( key == 'N' || key == 'n' ) {
+        loop();
+        showHome();
+      }
     }
   }
 
@@ -435,8 +446,12 @@ void keyPressed() {
         openHelp();
       } else if ( key == 'C' || key == 'c' ) {
         loop();
+        jFile.stop();
+        tFile.loop();
       } else if ( key == 'P' || key == 'p' ) {
         pause();
+        tFile.stop();
+        jFile.loop();
       }
       /*else if ( key == 'R' || key == 'r' ) {
        noLoop();
