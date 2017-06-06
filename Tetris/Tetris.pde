@@ -1,14 +1,13 @@
 import java.util.Queue;
 import java.util.LinkedList;
 
-boolean gameOver;
+boolean gameOver = true;
 Tetromino currPiece;//current piece in play.
 int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
 int score;
-boolean on = false;
-boolean off = false;
+int difficulty = 1;
 
 void setup() {
   size( 600, 800 );
@@ -22,8 +21,6 @@ void initialize() {
   gameOver = false;
   fillQ();
   currPiece = getShape();
-  on = true;
-  off = false;
   score = 0;
 }
 
@@ -31,7 +28,7 @@ void draw() {
   //clear everything
   background(8, 46, 53);
 
-  if ( on == false ) {
+  if ( gameOver == true ) {
     background(8, 46, 53);
     textSize(80);
     fill(255, 0, 0);
@@ -56,10 +53,10 @@ void draw() {
     textSize( 25 );
 
     fill(255, 255, 255);
-    text( "Press Enter/Return to start!", 300, 250);
+    text( "Choose your difficulty!\n 1-4, 1 being easiest, 4 being hardest!", 300, 250);
   }
 
-  if ( on == true && off == false) {
+  if ( gameOver == false ) {
 
     //draw grid
     for (int x = 0; x < 10; x++) {
@@ -92,7 +89,7 @@ void draw() {
     // showRestart();
 
     //tetromino falls every 1/2 of a second
-    if (frameCount % 30 == 0) {
+    if (frameCount % ( 30 / difficulty ) == 0) {
       currPos[1]++;
     }
     stack();
@@ -106,7 +103,7 @@ void draw() {
 }
 
 void showHelp() {
-  if ( on == true && off == false ) {
+  if ( gameOver == false ) {
     textSize(20);
     fill(53, 223, 255);
     text("Press 'H' or 'h'", 470, 450);
@@ -118,7 +115,7 @@ void showHelp() {
 }
 
 void showPause() {
-  if ( on == true && off == false ) {
+  if ( gameOver == false ) {
     textSize(20);
     fill(53, 223, 255);
     text("Press 'P' or 'p'", 470, 550);
@@ -144,14 +141,14 @@ void showRestart() {
 
 void showScore() {
 
-  if ( on == true && off == false ) {
+  if ( gameOver == false ) {
     textSize(30);
     textAlign(CENTER);
     fill(53, 223, 255);
     text("Score: "+ score, 300, 700);
   }
 
-  if ( on == false && off == true ) {
+  if ( gameOver == true ) {
     textSize(30);
     textAlign(CENTER);
     fill ( 255, 255, 255 );
@@ -183,8 +180,7 @@ void stack() {
       if (currPiece.getY(i) + currPos[1] < 0) {
         delay(1500);
         endGame();
-        on = false;
-        off = true;
+        gameOver = true;
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
@@ -318,17 +314,30 @@ void showNext() {
 
 //keyboard inputs
 void keyPressed() {
-  if ( on == false ) {
-    if ( key == ENTER ) {
+  if ( gameOver == true ) {
+    if ( key == '1' ) {
+      difficulty = 1;
       initialize();
-      on = true;
-    } else if ( key == RETURN ) {
+      gameOver = false;
+    }
+    if ( key == '2' ) {
+      difficulty = 2;
       initialize();
-      on = true;
+      gameOver = false;
+    }
+    if ( key == '3' ) {
+      difficulty = 3;
+      initialize();
+      gameOver = false;
+    }
+     if ( key == '4' ) {
+      difficulty = 5;
+      initialize();
+      gameOver = false;
     }
   }
 
-  if ( on == true ) {
+  if ( gameOver == false ) {
     if ( currPiece.getMaxY() + currPos[1] < 19) {
       if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
         currPiece.rotateCCW();
@@ -486,7 +495,7 @@ void pause() {
 
   textSize( 15 );
   fill(153, 223, 255);
-  text("~ Que Jeopardy waiting music ~", 300, 420);
+  text("~ Cue Jeopardy waiting music ~", 300, 420);
 
 
   textSize( 20 );

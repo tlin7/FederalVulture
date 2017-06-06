@@ -19,11 +19,8 @@ OBSTACLES OVERCOME
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Really weird problems with plotting the coordinates-when we moved the coordinates up and to the right to standarize everything, it reflected shapes for no apparent reason
-3. A bug exists that we don't know how to replicate where a piece will crash the game one space above where it would be placed (NullPointerException is thrown. Probably similar to previous bug)
-4. Hard dropping pieces - more difficult than expected
-5. Many bugs involving rotating or moving pieces discovered: moving a piece from the left or right into another piece does not trip the boundary check, so they just merge; rotating a piece into another sometimes merges the pieces and sometimes crashes the program; rotating out of bounds crashes the program, soft dropping sometimes causes pieces to merge or crashes program, pretty sure it is when user soft drops at the same time that the piece falls naturally
-6. Hard to replicate bug where piece would just continually move downwards past the bottom of the grid, effectively rendering the game unplayable because it just keeps falling forever.
+1. Hard to replicate bug where piece would just continually move downwards past the bottom of the grid, effectively rendering the game unplayable because it just keeps falling forever.
+2. Many rare and unreplicable hard drop bugs. Sometimes, a piece will freeze when hard dropped, and then stack overflow. Sometimes, an array out of bounds error will be thrown. These bugs are inconsistent, and we can't figure out what's triggering them or how to fix them
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,13 +64,13 @@ LESSONS LEARNED
    \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
     
+
 ==============================================================
 2017-06-06
 --------------------------------------------------------------
 Thomas :: 
-Edward :: 
+Edward :: Fixed many bugs, cleaned a lot of code, added difficulty modes, tried to fix other bugs but didn't work
 Taylor :: Delay before ending, bug work
-==============================================================
 ==============================================================
 2017-06-05
 --------------------------------------------------------------
