@@ -72,7 +72,7 @@ LESSONS LEARNED
 --------------------------------------------------------------
 Thomas :: Clockwise roation on boundaries fixed. Endscreen bugs fixed. Scoring tweaked.
 Edward :: Got hard dropping to work
-Taylor :: Start game, end game, colors, overall display.
+Taylor :: Start game, end game, colors, overall display, fixed key bugs
 ==============================================================
 2017-06-03
 --------------------------------------------------------------
