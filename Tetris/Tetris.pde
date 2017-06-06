@@ -87,6 +87,7 @@ void draw() {
     displayShape();
     showNext();
     showHelp();
+    showPause();
 
     //tetromino falls every 1/2 of a second
     if (frameCount % 30 == 0) {
@@ -107,7 +108,16 @@ void showHelp() {
     textSize(20);
     fill(255);
     text("Press 'H' or 'h'", 470, 450);
-    text(" for keys help", 470, 480);
+    text("for keys help", 470, 480);
+  }
+}
+
+void showPause() {
+  if ( on == true && off == false ) {
+    textSize(20);
+    fill(255);
+    text("Press 'P' or 'p'", 470, 550);
+    text("to pause game", 470, 580);
   }
 }
 
@@ -331,6 +341,8 @@ void keyPressed() {
         openHelp();
       } else if ( key == 'C' || key == 'c' ) {
         loop();
+      } else if ( key == 'P' || key == 'p' ) {
+        pause();
       } else if ( key == CODED ) {
         if ( keyCode == DOWN ) {//accelerate down
           //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
@@ -429,6 +441,31 @@ void openHelp() {
   text("Press 'C' or 'c' to continue", 300, 650);
 }
 
+void pause() {
+
+  noLoop();
+
+  background(8, 46, 53);
+
+  textAlign(CENTER);
+  textSize(60);
+  fill(255);
+  text("GAME PAUSED", 300, 200);
+
+  textSize( 25 );
+
+  fill(53, 223, 255);
+  text("Don't worry, we'll wait for you. :)", 300, 400);
+
+  textSize( 15 );
+  fill(153, 223, 255);
+  text("~ Que Jeopardy waiting music ~", 300, 420);
+
+
+  textSize( 20 );
+  fill(255);
+  text("Press 'C' or 'c' to continue", 300, 650);
+}
 
 void endGame() {
   noLoop();
