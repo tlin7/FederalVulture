@@ -6,7 +6,7 @@ Tetromino currPiece;//current piece in play.
 int Grid[][] = new int[10][20];//Playing field.
 int currPos[] = new int[2];//x y of starting piece.
 Queue<Tetromino> shapes;
-int score = 0;
+int score;
 boolean on = false;
 boolean off = false;
 
@@ -24,6 +24,7 @@ void initialize() {
   currPiece = getShape();
   on = true;
   off = false;
+  score = 0;
 }
 
 void draw() {
@@ -88,6 +89,7 @@ void draw() {
     showNext();
     showHelp();
     showPause();
+    // showRestart();
 
     //tetromino falls every 1/2 of a second
     if (frameCount % 30 == 0) {
@@ -106,21 +108,39 @@ void draw() {
 void showHelp() {
   if ( on == true && off == false ) {
     textSize(20);
-    fill(255);
+    fill(53, 223, 255);
     text("Press 'H' or 'h'", 470, 450);
-    text("for keys help", 470, 480);
+    text("for keys", 440, 480);
+
+    fill(255);
+    text("         HELP", 480, 480);
   }
 }
 
 void showPause() {
   if ( on == true && off == false ) {
     textSize(20);
-    fill(255);
+    fill(53, 223, 255);
     text("Press 'P' or 'p'", 470, 550);
-    text("to pause game", 470, 580);
+    text("to            game", 470, 580);
+
+    fill(255);
+    text("PAUSE     ", 470, 580);
   }
 }
 
+/*
+void showRestart() {
+ if ( on == true && off == false ) {
+ textSize(20);
+ fill(53, 223, 255);
+ text("Press 'R' or 'r'", 470, 350);
+ text("to                game", 470, 380);
+ 
+ fill(255);
+ text("RESTART     ", 470, 380);
+ }
+ }*/
 
 void showScore() {
 
@@ -161,6 +181,7 @@ void stack() {
   if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
     for (int i = 0; i < 4; i++) {
       if (currPiece.getY(i) + currPos[1] < 0) {
+        delay(1500);
         endGame();
         on = false;
         off = true;
@@ -343,7 +364,13 @@ void keyPressed() {
         loop();
       } else if ( key == 'P' || key == 'p' ) {
         pause();
-      } else if ( key == CODED ) {
+      }
+      /*else if ( key == 'R' || key == 'r' ) {
+       noLoop();
+       initialize();
+       loop();
+       } */
+      else if ( key == CODED ) {
         if ( keyCode == DOWN ) {//accelerate down
           //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
           currPos[1]++;
