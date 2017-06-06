@@ -120,7 +120,7 @@ Taylor :: Worked on boundary detection
 --------------------------------------------------------------
 Thomas :: Properly displayed tetrominos.
 Edward :: Worked on registering key presses
-Taylor :: worked on keypress directions
+Taylor :: Worked on keypress directions
 ==============================================================
 2017-05-23
 --------------------------------------------------------------
@@ -139,20 +139,20 @@ Taylor ::
 --------------------------------------------------------------
 Thomas :: Completed most of the basics within Tetromino class and combined it with driver
 Edward :: 
-Taylor :: 
+Taylor :: Working on keys
 ==============================================================
 
 2017-05-19 
 --------------------------------------------------------------
 Thomas :: Started work on Tetromino class
 Edward :: Worked on driver
-Taylor :: started working on keys
+Taylor :: Started working on keys
 ==============================================================
 
 2017-05-18 (and prior to it)
 --------------------------------------------------------------
 Thomas :: 
 Edward :: Started working on driver
-Taylor :: added/modified devlog, registered repo, modified README
+Taylor :: Added/modified devlog, registered repo, modified README
 ==============================================================
 
