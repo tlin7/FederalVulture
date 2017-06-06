@@ -28,7 +28,7 @@ void initialize() {
 
 void draw() {
   //clear everything
-  background(0);
+  background(8, 46, 53);
 
   if ( on == false ) {
     background(8, 46, 53);
@@ -64,7 +64,7 @@ void draw() {
     for (int x = 0; x < 10; x++) {
       for (int y = 0; y < 20; y++) {
         if (Grid[x][y] == 0) {
-          fill(150);
+          fill(0);
         } else if (Grid[x][y] == 1) {//cyan I
           fill(0, 255, 255);
         } else if (Grid[x][y] == 2) {//red Z
@@ -86,6 +86,7 @@ void draw() {
 
     displayShape();
     showNext();
+    showHelp();
 
     //tetromino falls every 1/2 of a second
     if (frameCount % 30 == 0) {
@@ -100,6 +101,16 @@ void draw() {
     showScore();
   }
 }
+
+void showHelp() {
+  if ( on == true && off == false ) {
+    textSize(20);
+    fill(255);
+    text("Press 'H' or 'h'", 470, 450);
+    text(" for keys help", 470, 480);
+  }
+}
+
 
 void showScore() {
 
@@ -316,6 +327,10 @@ void keyPressed() {
         if (currPiece.getMaxY() + currPos[1] > 19) {
           currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
         }
+      } else if ( key == 'H' || key == 'h' ) {
+        openHelp();
+      } else if ( key == 'C' || key == 'c' ) {
+        loop();
       } else if ( key == CODED ) {
         if ( keyCode == DOWN ) {//accelerate down
           //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
@@ -388,6 +403,32 @@ void drop() {
     }
   }
 }
+void openHelp() {
+
+  noLoop();
+
+  background(8, 46, 53);
+
+  textAlign(CENTER);
+  textSize(60);
+  fill(255);
+  text("HELP:", 300, 200);
+
+  textSize( 25 );
+
+  fill(53, 223, 255);
+  text("UP: hard-drop", 300, 300);
+  text("DOWN: accelerate down", 300, 350);
+  text("RIGHT: move right", 300, 400);
+  text("LEFT: move left", 300, 450);
+  text("'D': rotate clockwise", 300, 500);
+  text("'A': rotate counter-clockwise", 300, 550);
+
+  textSize( 20 );
+  fill(255);
+  text("Press 'C' or 'c' to continue", 300, 650);
+}
+
 
 void endGame() {
   noLoop();
