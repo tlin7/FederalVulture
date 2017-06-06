@@ -24,7 +24,7 @@ Our implementation of Tetris will follow the classic game’s rules and goals-- 
 3. Open driver with Processing: ```processing Tetris.pde```
 4. Press the play button
 
-<b> NOTE </b> : The Processing Sound library MUST be installed before running.
+<b> ***NOTE*** </b> : The Processing Sound library MUST be installed before running.
 
 <h3>Controls</h3>
 
