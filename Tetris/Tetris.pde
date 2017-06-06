@@ -114,7 +114,7 @@ void showScore() {
     textSize(30);
     textAlign(CENTER);
     fill ( 255, 255, 255 );
-    text("Score: "+ score, 300, 300);
+    text("Score: "+ score, 300, 330);
   }
 }
 
@@ -285,65 +285,68 @@ void keyPressed() {
       on = true;
     }
   }
-  if ( currPiece.getMaxY() + currPos[1] < 19) {
-    if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
-      currPiece.rotateCCW();
-      if (currPiece.getLeastX() + currPos[0] < 0) {
-        currPos[0] -= currPiece.getLeastX() + currPos[0];
-      }
-      if (currPiece.getMaxX() + currPos[0] > 9) {
-        currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      }
-      if (currPiece.getLeastY() + currPos[1] < 0) {
-        currPos[1] -= currPiece.getLeastY() + currPos[1];
-      } 
-      if (currPiece.getMaxY() + currPos[1] > 19) {
-        currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
-      }
-    } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
-      currPiece.rotateCW();
-      if (currPiece.getLeastX() + currPos[0] < 0) {
-        currPos[0] -= currPiece.getLeastX() + currPos[0];
-      }  
-      if (currPiece.getMaxX() + currPos[0] > 9) {
-        currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
-      }  
-      if (currPiece.getLeastY() + currPos[1] < 0) {
-        currPos[1] -= currPiece.getLeastY() + currPos[1];
-      } 
-      if (currPiece.getMaxY() + currPos[1] > 19) {
-        currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
-      }
-    } else if ( key == CODED ) {
-      if ( keyCode == DOWN ) {//accelerate down
-        //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
-        currPos[1]++;
-        score++;
-        // }
-      } else if ( keyCode == UP ) {//hard drop down
-        drop();
-      } else if ( keyCode == LEFT ) {//move left
-        boolean move = true;
-        if (currPiece.getLeastX() + currPos[0] > 0 && currPiece.getLeastY() + currPos[1] >= 0) {
-          for (int i = 0; i < 4; i++) {
-            if (Grid[currPiece.getX(i) + currPos[0]-1][currPiece.getY(i) + currPos[1]] != 0) {
-              move = false;
-            }
-          }
-          if (move != false) {
-            currPos[0]--;
-          }
+
+  if ( on == true ) {
+    if ( currPiece.getMaxY() + currPos[1] < 19) {
+      if ( key == 'A' || key == 'a' ) {//counter clockwise rotation
+        currPiece.rotateCCW();
+        if (currPiece.getLeastX() + currPos[0] < 0) {
+          currPos[0] -= currPiece.getLeastX() + currPos[0];
         }
-      } else if ( keyCode == RIGHT ) {//move right
-        boolean move = true;
-        if ( currPiece.getMaxX() + currPos[0] < 9  && currPiece.getLeastY() + currPos[1] >= 0) {
-          for (int i = 0; i < 4; i++) {
-            if (Grid[currPiece.getX(i) + currPos[0]+1][currPiece.getY(i) + currPos[1]] != 0) {
-              move = false;
+        if (currPiece.getMaxX() + currPos[0] > 9) {
+          currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
+        }
+        if (currPiece.getLeastY() + currPos[1] < 0) {
+          currPos[1] -= currPiece.getLeastY() + currPos[1];
+        } 
+        if (currPiece.getMaxY() + currPos[1] > 19) {
+          currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
+        }
+      } else if ( key == 'D' || key == 'd' ) {//clockwise rotation
+        currPiece.rotateCW();
+        if (currPiece.getLeastX() + currPos[0] < 0) {
+          currPos[0] -= currPiece.getLeastX() + currPos[0];
+        }  
+        if (currPiece.getMaxX() + currPos[0] > 9) {
+          currPos[0] -= currPiece.getMaxX() + currPos[0]-9;
+        }  
+        if (currPiece.getLeastY() + currPos[1] < 0) {
+          currPos[1] -= currPiece.getLeastY() + currPos[1];
+        } 
+        if (currPiece.getMaxY() + currPos[1] > 19) {
+          currPos[1] -= currPiece.getMaxY() + currPos[1]-19;
+        }
+      } else if ( key == CODED ) {
+        if ( keyCode == DOWN ) {//accelerate down
+          //   if ( Grid[currPiece.getMaxX() + currPos[0]][currPiece.getMaxY() + currPos[1] + 1] != 0 ) {
+          currPos[1]++;
+          score++;
+          // }
+        } else if ( keyCode == UP ) {//hard drop down
+          drop();
+        } else if ( keyCode == LEFT ) {//move left
+          boolean move = true;
+          if (currPiece.getLeastX() + currPos[0] > 0 && currPiece.getLeastY() + currPos[1] >= 0) {
+            for (int i = 0; i < 4; i++) {
+              if (Grid[currPiece.getX(i) + currPos[0]-1][currPiece.getY(i) + currPos[1]] != 0) {
+                move = false;
+              }
+            }
+            if (move != false) {
+              currPos[0]--;
             }
           }
-          if (move != false) {
-            currPos[0]++;
+        } else if ( keyCode == RIGHT ) {//move right
+          boolean move = true;
+          if ( currPiece.getMaxX() + currPos[0] < 9  && currPiece.getLeastY() + currPos[1] >= 0) {
+            for (int i = 0; i < 4; i++) {
+              if (Grid[currPiece.getX(i) + currPos[0]+1][currPiece.getY(i) + currPos[1]] != 0) {
+                move = false;
+              }
+            }
+            if (move != false) {
+              currPos[0]++;
+            }
           }
         }
       }
@@ -423,12 +426,9 @@ void endGame() {
   textSize( 25 );
 
   fill(255, 255, 255);
-  text("Great job! Your score was:", 300, 250);
+  text("Great job! Your score was:", 300, 280);
 
   textSize(30);
-  textAlign(CENTER);
-  text("Score: "+ score, 300, 300);
-
   fill(53, 223, 255);
   text("The fun doesn't have to end here!", 300, 450);
   text("Play again!", 300, 500);
