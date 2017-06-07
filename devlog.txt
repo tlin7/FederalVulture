@@ -14,32 +14,31 @@ OBSTACLES OVERCOME
 
 1. Creating the pieces
 2. Checking boundaries
-3. Made hard dropping work!
+3. Made hard dropping work!(Most of the time)
 
 UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Hard to replicate bug where piece would just continually move downwards past the bottom of the grid, effectively rendering the game unplayable because it just keeps falling forever.
+1. Hard to replicate bug where piece would just continually move downwards past the bottom of the grid, effectively rendering the game unplayable because it just keeps falling forever
 2. Many rare and unreplicable hard drop bugs. Sometimes, a piece will freeze when hard dropped, and then stack overflow. Sometimes, an array out of bounds error will be thrown. These bugs are inconsistent, and we can't figure out what's triggering them or how to fix them
 
 COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Someetimes, trial and error can be efficient
-2. COOL
-3. STUFF
-4. LEARNED
-5. HERE
+1. Sometimes, trial and error can be efficient
+2. Processing methods like keypresses and text
+3. How to add sound/importing processing library
+4. Space allocation/working with pixels.
 
 
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Rotation both ways
-2. MID-DEVELOPMENT
-3. DESIGN
-4. CHANGES
-5. HERE
+2. Added hard drop
+3. Added pause/help screen
+4. Added start/end screen
+5. Added different difficulty levels
 
 
 
@@ -47,9 +46,9 @@ LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Don't make merge errors
-2. LESSONS
-3. LEARNED 
-4. HERE
+2. Thorough testing can uncover many more imperfections than you would think
+3. Check the simplest stuff too when trying to fix an error instead of assuming easy = no need to check
+4. Using a method as the base for another can be useful and saves time
 
 
 ||||||||||||||||||||||||||||||||||||||||||
