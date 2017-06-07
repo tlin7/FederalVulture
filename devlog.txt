@@ -68,7 +68,7 @@ LESSONS LEARNED
 ==============================================================
 2017-06-06
 --------------------------------------------------------------
-Thomas :: 
+Thomas :: Small edits to start screen, edited/deleted/tidied code up a bit.
 Edward :: Fixed many bugs, cleaned a lot of code, added difficulty modes, tried to fix other bugs but didn't work
 Taylor :: Delay before ending, bug work, display level, confirm level, update difficulty, music/sounds (main and pause)
 ==============================================================
