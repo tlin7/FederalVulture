@@ -12,8 +12,8 @@ Tetris
 OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Creating the pieces
-2. Checking boundaries
+1. Creating the pieces (Used a 2d array for x and y coordinates that get adjusted as the game plays)
+2. Checking boundaries (If a piece's rotation causes it to go our of bounds, it gets shifted back inside) 
 3. Made hard dropping work!(Most of the time)
 
 UNRESOLVED ISSUES
@@ -34,12 +34,11 @@ COOL STUFF LEARNED
 MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Rotation both ways
-2. Added hard drop
-3. Added pause/help screen
-4. Added start/end screen
-5. Added different difficulty levels
-
+1. Rotation both ways (Mashing one rotation button can be difficult especially at higher difficulties)
+2. Added hard drop (This mechanism was added to newer versions of Tetris and is convenient)
+3. Added pause/help screen (Pause to take a break, help is always good)
+4. Added start screen (A start screen lets you choose when to start as opposed to the game automatically running)
+5. Added different difficulty levels (Because maybe some people want to show off their Tetris expertise)
 
 
 LESSONS LEARNED
