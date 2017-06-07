@@ -36,4 +36,4 @@ Our implementation of Tetris will follow the classic game’s rules and goals-- 
 
 <h3>Bonus features</h3>
 
-Bonus features that we have decided to include (but are not crucial to the core functionality of Tetris) are a scorekeeping display which includes point bonus for accelerating the descent of the shapes, the ability for a user to choose the level they ant to play, display of the next shape to be played, the availability of help and pause screens, and background music.
+Bonus features that we have decided to include (but are not crucial to the core functionality of Tetris) are a scorekeeping display (which includes point bonus for accelerating the descent of the shapes), the ability for a user to choose the level they ant to play, display of the next shape to be played, the availability of help and pause screens, and background music.
