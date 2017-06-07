@@ -24,7 +24,6 @@ void setup() {
 
 void initialize() {
   shapes = new LinkedList<Tetromino>(); 
-  //currPiece = new Tetromino();
   currPos[0] = 4;
   currPos[1] = 0;
   gameOver = false;
@@ -119,6 +118,10 @@ void showHome() {
   textSize(20);
   fill(53, 223, 255);
   text("(1-4, 1 being easiest, 4 being hardest)", 300, 400);
+  
+  textSize(15);
+  fill(255);
+  text("Implemented by Team FederalVulture \nThomas Lin, Taylor Wong, Edward Luo", 300, 700);
 }
 
 void confirmLevel() {
@@ -246,26 +249,13 @@ void stack() {
   if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
     for (int i = 0; i < 4; i++) {
       if (currPiece.getY(i) + currPos[1] < 0) {
-        delay(1500);
+        delay(150);
         endGame();
         gameOver = true;
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
     }
-    /*for (int i = 0; i < 4; i++) {
-     int counter = 0;
-     while (counter < 10) {
-     if (Grid[counter][currPiece.getY(i) + currPos[1]] != 0) {
-     counter++;
-     }
-     }
-     if (counter == 10) {
-     for (int x = 0; x < 10; x++) {
-     Grid[x][currPiece.getY(i) + currPos[1]-1] = Grid[x][currPiece.getY(i) + currPos[1]];
-     }
-     }
-     }*/
 
     boolean clear;
     int bonus = 0;
@@ -292,10 +282,10 @@ void stack() {
       score+=200; 
       bonus = 0;
     } else if (bonus == 3) {
-      score +=300; 
+      score +=400; 
       bonus = 0;
     } else if (bonus == 4) {
-      score+=400; 
+      score+=800; 
       bonus = 0;
     }
     currPiece = getShape();
@@ -303,16 +293,6 @@ void stack() {
     currPos[1] = 0;
   }
 }
-
-/*
- void place() {
- for (int i = 0; i < 4; i++) {
- Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
- } 
- currPiece = getShape();
- currPos[0] = 4;
- currPos[1] = 0;
- }*/
 
 //fills the queue with tetrominos
 void fillQ() {
