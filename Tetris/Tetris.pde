@@ -16,14 +16,15 @@ int difficulty = 0;
 void setup() {
   size( 600, 800 );
 
-  jFile = new SoundFile(this, "Jeopardy-theme-song.mp3");
-  tFile = new SoundFile(this, "Tetris.mp3");
+  jFile = new SoundFile(this, "Jeopardy1.mp3");
+  tFile = new SoundFile(this, "Tetris1.mp3");
 
   tFile.loop();
 }
 
 void initialize() {
   shapes = new LinkedList<Tetromino>(); 
+  //currPiece = new Tetromino();
   currPos[0] = 4;
   currPos[1] = 0;
   gameOver = false;
@@ -118,11 +119,72 @@ void showHome() {
   textSize(20);
   fill(53, 223, 255);
   text("(1-4, 1 being easiest, 4 being hardest)", 300, 400);
-  
-  textSize(15);
-  fill(255);
-  text("Implemented by Team FederalVulture \nThomas Lin, Taylor Wong, Edward Luo", 300, 700);
 }
+
+void showHelp() {
+  if ( gameOver == false ) {
+    textSize(20);
+    fill(53, 223, 255);
+    text("Press 'H' or 'h'", 470, 450);
+    text("for keys", 440, 480);
+
+    fill(255);
+    text("         HELP", 480, 480);
+  }
+}
+
+void showPause() {
+  if ( gameOver == false ) {
+    textSize(20);
+    fill(53, 223, 255);
+    text("Press 'P' or 'p'", 470, 550);
+    text("to            game", 470, 580);
+
+    fill(255);
+    text("PAUSE     ", 470, 580);
+  }
+}
+
+void showScore() {
+
+  if ( gameOver == false ) {
+    textSize(30);
+    textAlign(CENTER);
+    fill(53, 223, 255);
+    text("Score: "+ score, 300, 700);
+  }
+
+  if ( gameOver == true ) {
+    textSize(30);
+    textAlign(CENTER);
+    fill ( 255, 255, 255 );
+    text("Score: "+ score, 300, 330);
+  }
+}
+
+void showLevel() {
+  textSize(30);
+  fill(53, 223, 255);
+  text("Level:", 470, 320);
+
+  fill(255);
+  text(difficulty, 470, 350);
+}
+
+
+/*
+void showRestart() {
+ if ( on == true && off == false ) {
+ textSize(20);
+ fill(53, 223, 255);
+ text("Press 'R' or 'r'", 470, 350);
+ text("to                game", 470, 380);
+ 
+ fill(255);
+ text("RESTART     ", 470, 380);
+ }
+ }*/
+
 
 void confirmLevel() {
 
@@ -163,69 +225,7 @@ void confirmLevel() {
   text("Press 'N' or 'n' if not.", 525, 400);
 }
 
-void showHelp() {
-  if ( gameOver == false ) {
-    textSize(20);
-    fill(53, 223, 255);
-    text("Press 'H' or 'h'", 470, 450);
-    text("for keys", 440, 480);
 
-    fill(255);
-    text("         HELP", 480, 480);
-  }
-}
-
-void showPause() {
-  if ( gameOver == false ) {
-    textSize(20);
-    fill(53, 223, 255);
-    text("Press 'P' or 'p'", 470, 550);
-    text("to            game", 470, 580);
-
-    fill(255);
-    text("PAUSE     ", 470, 580);
-  }
-}
-
-void showLevel() {
-  textSize(30);
-  fill(53, 223, 255);
-  text("Level:", 470, 320);
-
-  fill(255);
-  text(difficulty, 470, 350);
-}
-
-
-/*
-void showRestart() {
- if ( on == true && off == false ) {
- textSize(20);
- fill(53, 223, 255);
- text("Press 'R' or 'r'", 470, 350);
- text("to                game", 470, 380);
- 
- fill(255);
- text("RESTART     ", 470, 380);
- }
- }*/
-
-void showScore() {
-
-  if ( gameOver == false ) {
-    textSize(30);
-    textAlign(CENTER);
-    fill(53, 223, 255);
-    text("Score: "+ score, 300, 700);
-  }
-
-  if ( gameOver == true ) {
-    textSize(30);
-    textAlign(CENTER);
-    fill ( 255, 255, 255 );
-    text("Score: "+ score, 300, 330);
-  }
-}
 
 //checks if currPiece should stop, and if so, places the piece and gets next piece
 void stack() {
@@ -249,13 +249,26 @@ void stack() {
   if (currPiece.getMaxY()+ currPos[1] == 19 || stop == true) {//piece is on bottom row or hits another piece.
     for (int i = 0; i < 4; i++) {
       if (currPiece.getY(i) + currPos[1] < 0) {
-        delay(150);
+        delay(1500);
         endGame();
         gameOver = true;
       } else { 
         Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
       }
     }
+    /*for (int i = 0; i < 4; i++) {
+     int counter = 0;
+     while (counter < 10) {
+     if (Grid[counter][currPiece.getY(i) + currPos[1]] != 0) {
+     counter++;
+     }
+     }
+     if (counter == 10) {
+     for (int x = 0; x < 10; x++) {
+     Grid[x][currPiece.getY(i) + currPos[1]-1] = Grid[x][currPiece.getY(i) + currPos[1]];
+     }
+     }
+     }*/
 
     boolean clear;
     int bonus = 0;
@@ -282,10 +295,10 @@ void stack() {
       score+=200; 
       bonus = 0;
     } else if (bonus == 3) {
-      score +=400; 
+      score +=300; 
       bonus = 0;
     } else if (bonus == 4) {
-      score+=800; 
+      score+=400; 
       bonus = 0;
     }
     currPiece = getShape();
@@ -293,6 +306,16 @@ void stack() {
     currPos[1] = 0;
   }
 }
+
+/*
+ void place() {
+ for (int i = 0; i < 4; i++) {
+ Grid[currPiece.getX(i) + currPos[0]] [currPiece.getY(i) + currPos[1]] = currPiece.getColor();//set squares on grid to shape color #. #'d squares get filled in by draw().
+ } 
+ currPiece = getShape();
+ currPos[0] = 4;
+ currPos[1] = 0;
+ }*/
 
 //fills the queue with tetrominos
 void fillQ() {
@@ -605,4 +628,122 @@ void endGame() {
   fill(53, 223, 255);
   text("The fun doesn't have to end here!", 300, 450);
   text("Play again!", 300, 500);
+}
+
+
+class Tetromino {
+
+  int shape[][] =  new int [4][2];
+  int colorr;
+
+  public Tetromino() {
+    colorr = (int)(random(1, 8));
+    if (colorr == 1) {//I
+      shape[1][0] = 1;
+      shape[2][0] = -1;
+      shape[3][0] = -2;
+    } else if (colorr == 2) {//Z
+      shape[1][0] = -1;
+      shape[1][1] = -1;
+      shape[2][1] = -1;
+      shape[3][0] = 1;
+    } else if (colorr == 3) {//S
+      shape[1][0] = -1;
+      shape[2][1] = -1;
+      shape[3][0] = 1;
+      shape[3][1] = -1;
+    } else if (colorr == 4) {//L
+      shape[1][0] = -2;
+      shape[2][0] = -1;
+      shape[3][1] = -1;
+    } else if (colorr == 5) {//J
+      shape[1][0] = -2;
+      shape[2][0] = -1;
+      shape[3][1] = 1;
+    } else if (colorr == 6) {//O
+      shape[1][0] = -1;
+      shape[2][0] = -1;
+      shape[2][1] = -1;
+      shape[3][1] = -1;
+    } else {                 //T
+      shape[1][0] = -1;
+      shape[2][1] = -1;
+      shape[3][0] = 1;
+    }
+  }
+
+  public int getX(int i) {
+    return shape[i][0];
+  }
+
+  public int getY(int i) {
+    return shape[i][1];
+  }
+
+  public int getMaxX() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][0] > shape[i][0]) {
+        i = x;
+      }
+    }
+    return shape[i][0];
+  }
+
+  public int getMaxY() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][1] > shape[i][1]) {
+        i = x;
+      }
+    }
+    return shape[i][1];
+  }
+
+  public int getLeastX() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][0] < shape[i][0]) {
+        i = x;
+      }
+    }
+    return shape[i][0];
+  }
+
+  public int getColor() {
+    return colorr;
+  }
+
+  public int getLeastY() {
+    int i = 0;
+    for (int x = 0; x < 4; x++) {
+      if (shape[x][1] < shape[i][1]) {
+        i = x;
+      }
+    }
+    return shape[i][1];
+  }
+
+  //90 degree clockwise rotation
+  public void rotateCW() {
+    if (colorr != 6) {
+      for (int i = 0; i < 4; i ++) {
+        int point = shape[i][0];
+        shape[i][0] = -shape[i][1];
+        shape[i][1] = point;
+      }
+    }
+  }
+
+
+  //90 degree counter clockwise rotation
+  public void rotateCCW() {
+    if (colorr != 6) {
+      for (int i = 0; i < 4; i ++) {
+        int point = shape[i][0];
+        shape[i][0] = shape[i][1];
+        shape[i][1] = -point;
+      }
+    }
+  }
 }
