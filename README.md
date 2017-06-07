@@ -32,7 +32,8 @@ Our implementation of Tetris will follow the classic game’s rules and goals-- 
 * Use 'A' and 'D' to rotate the piece counter clockwise and clockwise, respectively
 * Use the down arrow key to make the piece fall faster
 * Use the up arrow key to drop the piece immediately
+* Other keys may be used as prompted
 
 <h3>Bonus features</h3>
 
-Bonus features that we aim to include (but are not crucial to the core functionality of Tetris) will include a scorekeeping display as well as a point bonus for accelerating the descent of the shapes. We are thinking about maybe using queues to implement a high score system. As previously stated, we will also have a display that shows the player what tetromino will get popped off and appear next. We also plan on offering things like different control schemes and different difficulties or game modes. 
+Bonus features that we have decided to include (but are not crucial to the core functionality of Tetris) are a scorekeeping display which includes point bonus for accelerating the descent of the shapes, the ability for a user to choose the level they ant to play, display of the next shape to be played, the availability of help and pause screens, and background music.
